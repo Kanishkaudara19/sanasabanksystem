@@ -26,22 +26,361 @@ public class main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jPanel1 = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jSeparator9 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jSeparator12 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenu10 = new javax.swing.JMenu();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jSeparator11 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem18 = new javax.swing.JMenuItem();
+        jSeparator10 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem19 = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenu11 = new javax.swing.JMenu();
+        jMenuItem20 = new javax.swing.JMenuItem();
+        jSeparator13 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem21 = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jMenu12 = new javax.swing.JMenu();
+        jMenuItem22 = new javax.swing.JMenuItem();
+        jSeparator14 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem23 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem24 = new javax.swing.JMenuItem();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem25 = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem15.setText("jMenuItem15");
+
+        jMenuItem16.setText("jMenuItem16");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 204, 255));
+        setPreferredSize(new java.awt.Dimension(1366, 768));
+        setSize(new java.awt.Dimension(1366, 768));
+
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1366, 698));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1366, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 698, Short.MAX_VALUE)
+        );
+
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(814, 70));
+
+        jMenu1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registation1.png"))); // NOI18N
+        jMenu1.setText("Registration");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jMenu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jMenu1.setIconTextGap(10);
+        jMenu1.setPreferredSize(new java.awt.Dimension(170, 31));
+
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem2.setText("Member");
+        jMenuItem2.setPreferredSize(new java.awt.Dimension(170, 35));
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+        jMenu1.add(jSeparator4);
+
+        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem3.setText("Non - member");
+        jMenuItem3.setPreferredSize(new java.awt.Dimension(170, 35));
+        jMenu1.add(jMenuItem3);
+        jMenu1.add(jSeparator5);
+
+        jMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem4.setText("Child");
+        jMenuItem4.setPreferredSize(new java.awt.Dimension(170, 35));
+        jMenu1.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/accountadd1.png"))); // NOI18N
+        jMenu2.setText("Account");
+        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jMenu2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jMenu2.setPreferredSize(new java.awt.Dimension(140, 50));
+
+        jMenuItem5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem5.setText("Account");
+        jMenuItem5.setPreferredSize(new java.awt.Dimension(140, 35));
+        jMenu2.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/trnassation1.png"))); // NOI18N
+        jMenu3.setText("Transaction");
+        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jMenu3.setPreferredSize(new java.awt.Dimension(160, 31));
+
+        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem6.setText("Withdraw");
+        jMenuItem6.setPreferredSize(new java.awt.Dimension(160, 35));
+        jMenu3.add(jMenuItem6);
+        jMenu3.add(jSeparator6);
+
+        jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem7.setText("Deposit");
+        jMenuItem7.setPreferredSize(new java.awt.Dimension(160, 35));
+        jMenu3.add(jMenuItem7);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/loanimage1.png"))); // NOI18N
+        jMenu8.setText("Loan");
+        jMenu8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jMenu8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jMenu8.setPreferredSize(new java.awt.Dimension(100, 31));
+
+        jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem9.setText("Apply loan");
+        jMenuItem9.setPreferredSize(new java.awt.Dimension(100, 35));
+        jMenu8.add(jMenuItem9);
+        jMenu8.add(jSeparator7);
+
+        jMenuItem10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem10.setText("Loan payments");
+        jMenuItem10.setPreferredSize(new java.awt.Dimension(100, 35));
+        jMenu8.add(jMenuItem10);
+
+        jMenuBar1.add(jMenu8);
+
+        jMenu4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/balancecheck1.png"))); // NOI18N
+        jMenu4.setText("Balance");
+        jMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jMenu4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jMenu4.setPreferredSize(new java.awt.Dimension(130, 31));
+
+        jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem8.setText("Balance");
+        jMenuItem8.setPreferredSize(new java.awt.Dimension(130, 35));
+        jMenu4.add(jMenuItem8);
+
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/details1.png"))); // NOI18N
+        jMenu5.setText("Details & Reports");
+        jMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jMenu5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jMenu5.setPreferredSize(new java.awt.Dimension(220, 31));
+
+        jMenu9.setText("Account");
+        jMenu9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu9.setPreferredSize(new java.awt.Dimension(220, 35));
+
+        jMenuItem11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem11.setText("Member");
+        jMenuItem11.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenu9.add(jMenuItem11);
+        jMenu9.add(jSeparator9);
+
+        jMenuItem12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem12.setText("Non - member");
+        jMenuItem12.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenu9.add(jMenuItem12);
+        jMenu9.add(jSeparator12);
+
+        jMenuItem13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem13.setText("Child");
+        jMenuItem13.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenu9.add(jMenuItem13);
+
+        jMenu5.add(jMenu9);
+        jMenu5.add(jSeparator1);
+
+        jMenu10.setText("Registration");
+        jMenu10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu10.setPreferredSize(new java.awt.Dimension(220, 35));
+
+        jMenuItem17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem17.setText("Member");
+        jMenuItem17.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenu10.add(jMenuItem17);
+        jMenu10.add(jSeparator11);
+
+        jMenuItem18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem18.setText("Non - member");
+        jMenuItem18.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenu10.add(jMenuItem18);
+        jMenu10.add(jSeparator10);
+
+        jMenuItem19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem19.setText("Child");
+        jMenuItem19.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenu10.add(jMenuItem19);
+
+        jMenu5.add(jMenu10);
+        jMenu5.add(jSeparator2);
+
+        jMenu11.setText("Transaction");
+        jMenu11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu11.setPreferredSize(new java.awt.Dimension(220, 35));
+
+        jMenuItem20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem20.setText("Withdraw");
+        jMenuItem20.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenu11.add(jMenuItem20);
+        jMenu11.add(jSeparator13);
+
+        jMenuItem21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem21.setText("Deposit");
+        jMenuItem21.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenu11.add(jMenuItem21);
+
+        jMenu5.add(jMenu11);
+        jMenu5.add(jSeparator3);
+
+        jMenu12.setText("Loan");
+        jMenu12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu12.setPreferredSize(new java.awt.Dimension(220, 35));
+
+        jMenuItem22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem22.setText("Loans");
+        jMenuItem22.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenu12.add(jMenuItem22);
+        jMenu12.add(jSeparator14);
+
+        jMenuItem23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem23.setText("Loan payments");
+        jMenuItem23.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenu12.add(jMenuItem23);
+
+        jMenu5.add(jMenu12);
+
+        jMenuBar1.add(jMenu5);
+
+        jMenu6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adminimage1.png"))); // NOI18N
+        jMenu6.setText("Admin");
+        jMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jMenu6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jMenu6.setPreferredSize(new java.awt.Dimension(145, 31));
+
+        jMenuItem24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem24.setText("Admin Registation");
+        jMenuItem24.setPreferredSize(new java.awt.Dimension(145, 35));
+        jMenuItem24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem24ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem24);
+        jMenu6.add(jSeparator8);
+
+        jMenuItem14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem14.setText("Admin Changes ");
+        jMenuItem14.setPreferredSize(new java.awt.Dimension(145, 35));
+        jMenu6.add(jMenuItem14);
+
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logoutmain1.png"))); // NOI18N
+        jMenu7.setText("Log Out");
+        jMenu7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jMenu7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jMenu7.setPreferredSize(new java.awt.Dimension(130, 31));
+
+        jMenuItem25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem25.setText("Log Out");
+        jMenuItem25.setPreferredSize(new java.awt.Dimension(130, 35));
+        jMenu7.add(jMenuItem25);
+
+        jMenuBar1.add(jMenu7);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem24ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +418,58 @@ public class main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
+    private javax.swing.JMenuItem jMenuItem23;
+    private javax.swing.JMenuItem jMenuItem24;
+    private javax.swing.JMenuItem jMenuItem25;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator10;
+    private javax.swing.JPopupMenu.Separator jSeparator11;
+    private javax.swing.JPopupMenu.Separator jSeparator12;
+    private javax.swing.JPopupMenu.Separator jSeparator13;
+    private javax.swing.JPopupMenu.Separator jSeparator14;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
+    private javax.swing.JPopupMenu.Separator jSeparator9;
     // End of variables declaration//GEN-END:variables
 }
