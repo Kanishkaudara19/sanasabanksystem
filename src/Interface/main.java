@@ -150,6 +150,11 @@ public class main extends javax.swing.JFrame {
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem3.setText("Non - member");
         jMenuItem3.setPreferredSize(new java.awt.Dimension(170, 35));
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
         jMenu1.add(jSeparator5);
 
@@ -398,6 +403,11 @@ public class main extends javax.swing.JFrame {
     private void jMenuItem24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem24ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem24ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        nonmember m1 =new nonmember();
+        deskstoppane.add(m1).setVisible(true); 
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
