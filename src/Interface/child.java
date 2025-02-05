@@ -80,7 +80,9 @@ public class child extends javax.swing.JInternalFrame {
         clearbtn = new javax.swing.JButton();
         ctimebox = new javax.swing.JLabel();
         cdatebox = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBorder(null);
         setClosable(true);
         setIconifiable(true);
 
@@ -218,6 +220,7 @@ public class child extends javax.swing.JInternalFrame {
         searchbox.setBounds(10, 30, 180, 30);
 
         searchbtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        searchbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search_icon.png"))); // NOI18N
         searchbtn.setText("Search");
         searchbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -234,6 +237,7 @@ public class child extends javax.swing.JInternalFrame {
 
         addbtn.setBackground(new java.awt.Color(204, 204, 204));
         addbtn.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        addbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/insert-.png"))); // NOI18N
         addbtn.setText("ADD");
         addbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addbtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -249,6 +253,7 @@ public class child extends javax.swing.JInternalFrame {
 
         updatebtn.setBackground(new java.awt.Color(204, 204, 204));
         updatebtn.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        updatebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/update.png"))); // NOI18N
         updatebtn.setText("Update");
         updatebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updatebtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -264,6 +269,7 @@ public class child extends javax.swing.JInternalFrame {
 
         deletebtn.setBackground(new java.awt.Color(204, 204, 204));
         deletebtn.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        deletebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete.png"))); // NOI18N
         deletebtn.setText("Delete");
         deletebtn.setToolTipText("");
         deletebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -275,6 +281,7 @@ public class child extends javax.swing.JInternalFrame {
 
         clearbtn.setBackground(new java.awt.Color(204, 204, 204));
         clearbtn.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        clearbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/clean.png"))); // NOI18N
         clearbtn.setText("Clear");
         clearbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clearbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -289,15 +296,14 @@ public class child extends javax.swing.JInternalFrame {
         cdatebox.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         cdatebox.setText("Date");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sanasa2.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -310,21 +316,30 @@ public class child extends javax.swing.JInternalFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(addbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(updatebtn, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                        .addComponent(updatebtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(deletebtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(clearbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGap(103, 103, 103)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(cdatebox, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(ctimebox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                                .addComponent(ctimebox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(242, 242, 242)
+                        .addComponent(jLabel1)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -770,6 +785,7 @@ public class child extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

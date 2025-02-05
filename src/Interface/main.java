@@ -182,6 +182,11 @@ public class main extends javax.swing.JFrame {
         jMenuItem5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem5.setText("Account");
         jMenuItem5.setPreferredSize(new java.awt.Dimension(140, 35));
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuBar1.add(jMenu2);
@@ -418,6 +423,11 @@ public class main extends javax.swing.JFrame {
         child m1 =new child();
         deskstoppane.add(m1).setVisible(true); 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        account m1 =new account();
+        deskstoppane.add(m1).setVisible(true); 
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
