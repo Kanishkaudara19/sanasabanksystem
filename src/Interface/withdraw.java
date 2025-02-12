@@ -86,7 +86,6 @@ public class withdraw extends javax.swing.JInternalFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sanasa2.png"))); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(220, 219, 219));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel3.setLayout(null);
 
         jPanel4.setBackground(new java.awt.Color(186, 184, 184));
@@ -158,7 +157,6 @@ public class withdraw extends javax.swing.JInternalFrame {
         amountbox.setBounds(160, 280, 70, 14);
 
         jPanel5.setBackground(new java.awt.Color(151, 193, 235));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel5.setLayout(null);
 
         withdrawbox.setBackground(new java.awt.Color(255, 93, 76));
@@ -213,7 +211,7 @@ public class withdraw extends javax.swing.JInternalFrame {
         txtarea.setColumns(20);
         txtarea.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         txtarea.setRows(5);
-        txtarea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        txtarea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(txtarea);
 
         datebox.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N

@@ -79,7 +79,6 @@ public class main extends javax.swing.JFrame {
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
-        jMenuItem25 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -230,17 +229,22 @@ public class main extends javax.swing.JFrame {
         jMenu8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenu8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jMenu8.setPreferredSize(new java.awt.Dimension(100, 31));
+        jMenu8.setPreferredSize(new java.awt.Dimension(130, 31));
 
         jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem9.setText("Apply loan");
-        jMenuItem9.setPreferredSize(new java.awt.Dimension(100, 35));
+        jMenuItem9.setPreferredSize(new java.awt.Dimension(130, 35));
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem9);
         jMenu8.add(jSeparator7);
 
         jMenuItem10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem10.setText("Loan payments");
-        jMenuItem10.setPreferredSize(new java.awt.Dimension(100, 35));
+        jMenuItem10.setPreferredSize(new java.awt.Dimension(130, 35));
         jMenu8.add(jMenuItem10);
 
         jMenuBar1.add(jMenu8);
@@ -390,12 +394,16 @@ public class main extends javax.swing.JFrame {
         jMenu7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu7.setPreferredSize(new java.awt.Dimension(130, 31));
-
-        jMenuItem25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem25.setText("Log Out");
-        jMenuItem25.setPreferredSize(new java.awt.Dimension(130, 35));
-        jMenu7.add(jMenuItem25);
-
+        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu7MouseClicked(evt);
+            }
+        });
+        jMenu7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu7ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
@@ -448,6 +456,23 @@ public class main extends javax.swing.JFrame {
          deposit m1 =new deposit();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
+        login log = new login();
+        log.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenu7ActionPerformed
+
+    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+        login log = new login();
+        log.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenu7MouseClicked
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+         loan m1 =new loan();
+        deskstoppane.add(m1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -516,7 +541,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

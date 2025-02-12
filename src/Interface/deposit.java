@@ -84,7 +84,6 @@ public class deposit extends javax.swing.JInternalFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sanasa2.png"))); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(220, 219, 219));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel3.setLayout(null);
 
         jPanel4.setBackground(new java.awt.Color(186, 184, 184));
@@ -151,10 +150,9 @@ public class deposit extends javax.swing.JInternalFrame {
         amountbox.setBounds(180, 290, 100, 14);
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel5.setLayout(null);
 
-        depositbox.setBackground(new java.awt.Color(51, 0, 255));
+        depositbox.setBackground(new java.awt.Color(86, 152, 250));
         depositbox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         depositbox.setForeground(new java.awt.Color(255, 255, 255));
         jPanel5.add(depositbox);
@@ -201,7 +199,7 @@ public class deposit extends javax.swing.JInternalFrame {
         txtarea.setColumns(20);
         txtarea.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         txtarea.setRows(5);
-        txtarea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        txtarea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(txtarea);
 
         datebox.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
