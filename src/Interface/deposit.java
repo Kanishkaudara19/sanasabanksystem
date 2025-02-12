@@ -15,29 +15,27 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author acer
  */
-public class withdraw extends javax.swing.JInternalFrame {
+public class deposit extends javax.swing.JInternalFrame {
 
     Connection con=null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-
+    
     int hour,second,minute;
     int day,month,year;
     String timestr,yearstr;
     /**
-     * Creates new form withdraw
+     * Creates new form deposit
      */
-    public withdraw() {
+    public deposit() {
         initComponents();
         con = DBconnect.connect();
         txtarea.setEditable(false);
         setDateTime();
-        
     }
 
     /**
@@ -49,24 +47,24 @@ public class withdraw extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        findbox = new javax.swing.JTextField();
+        accnobox = new javax.swing.JTextField();
         findbtn = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         idbox = new javax.swing.JLabel();
         namebox = new javax.swing.JLabel();
         typebox = new javax.swing.JLabel();
         amountbox = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        withdrawbox = new javax.swing.JTextField();
-        withdrawbtn = new javax.swing.JButton();
+        depositbox = new javax.swing.JTextField();
+        depositbtn = new javax.swing.JButton();
         clearbtn = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         printbtn = new javax.swing.JButton();
@@ -78,10 +76,10 @@ public class withdraw extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Withdraw");
+        jLabel1.setText("Deposit");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sanasa2.png"))); // NOI18N
 
@@ -93,14 +91,9 @@ public class withdraw extends javax.swing.JInternalFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Please Enter Account No"));
         jPanel4.setLayout(null);
 
-        findbox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        findbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                findboxActionPerformed(evt);
-            }
-        });
-        jPanel4.add(findbox);
-        findbox.setBounds(40, 30, 230, 30);
+        accnobox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jPanel4.add(accnobox);
+        accnobox.setBounds(40, 30, 230, 30);
 
         findbtn.setBackground(new java.awt.Color(204, 204, 204));
         findbtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -115,83 +108,78 @@ public class withdraw extends javax.swing.JInternalFrame {
         findbtn.setBounds(200, 70, 80, 30);
 
         jPanel3.add(jPanel4);
-        jPanel4.setBounds(20, 11, 310, 110);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("ID");
-        jPanel3.add(jLabel3);
-        jLabel3.setBounds(30, 140, 30, 15);
+        jPanel4.setBounds(20, 10, 310, 110);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Full Name");
+        jLabel4.setText("ID");
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(30, 190, 110, 15);
+        jLabel4.setBounds(30, 140, 110, 15);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("Account type");
+        jLabel5.setText("Full Name");
         jPanel3.add(jLabel5);
-        jLabel5.setBounds(30, 230, 110, 15);
+        jLabel5.setBounds(30, 190, 110, 15);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setText("Current Amount");
+        jLabel6.setText("Account Type");
         jPanel3.add(jLabel6);
-        jLabel6.setBounds(30, 280, 110, 15);
+        jLabel6.setBounds(30, 240, 110, 15);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setText("Current Amount");
+        jPanel3.add(jLabel7);
+        jLabel7.setBounds(30, 290, 110, 15);
 
         idbox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         idbox.setText("ID");
         jPanel3.add(idbox);
-        idbox.setBounds(160, 140, 50, 20);
+        idbox.setBounds(180, 140, 60, 14);
 
         namebox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         namebox.setText("Name");
         jPanel3.add(namebox);
-        namebox.setBounds(160, 190, 140, 14);
+        namebox.setBounds(180, 190, 150, 14);
 
         typebox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        typebox.setText("Acc Type");
+        typebox.setText("Type");
         jPanel3.add(typebox);
-        typebox.setBounds(160, 230, 130, 14);
+        typebox.setBounds(180, 240, 130, 14);
 
         amountbox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         amountbox.setText("Amount");
         jPanel3.add(amountbox);
-        amountbox.setBounds(160, 280, 70, 14);
+        amountbox.setBounds(180, 290, 100, 14);
 
-        jPanel5.setBackground(new java.awt.Color(151, 193, 235));
+        jPanel5.setBackground(new java.awt.Color(153, 153, 153));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel5.setLayout(null);
 
-        withdrawbox.setBackground(new java.awt.Color(255, 93, 76));
-        withdrawbox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        withdrawbox.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel5.add(withdrawbox);
-        withdrawbox.setBounds(80, 30, 122, 43);
+        depositbox.setBackground(new java.awt.Color(51, 0, 255));
+        depositbox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        depositbox.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel5.add(depositbox);
+        depositbox.setBounds(80, 30, 122, 43);
 
-        withdrawbtn.setBackground(new java.awt.Color(204, 204, 204));
-        withdrawbtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        withdrawbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/withdraw.png"))); // NOI18N
-        withdrawbtn.setText("Withdraw");
-        withdrawbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        withdrawbtn.addActionListener(new java.awt.event.ActionListener() {
+        depositbtn.setBackground(new java.awt.Color(204, 204, 204));
+        depositbtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        depositbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bank-deposit.png"))); // NOI18N
+        depositbtn.setText("Deposit");
+        depositbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        depositbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                withdrawbtnActionPerformed(evt);
+                depositbtnActionPerformed(evt);
             }
         });
-        jPanel5.add(withdrawbtn);
-        withdrawbtn.setBounds(50, 110, 130, 40);
+        jPanel5.add(depositbtn);
+        depositbtn.setBounds(50, 100, 130, 40);
 
         clearbtn.setBackground(new java.awt.Color(204, 204, 204));
         clearbtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         clearbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/clean.png"))); // NOI18N
         clearbtn.setText("Clear");
         clearbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        clearbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearbtnActionPerformed(evt);
-            }
-        });
         jPanel5.add(clearbtn);
-        clearbtn.setBounds(50, 170, 130, 40);
+        clearbtn.setBounds(50, 160, 130, 40);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel12.setText("Rs");
@@ -208,7 +196,7 @@ public class withdraw extends javax.swing.JInternalFrame {
             }
         });
         jPanel5.add(printbtn);
-        printbtn.setBounds(50, 230, 130, 40);
+        printbtn.setBounds(50, 220, 130, 40);
 
         txtarea.setColumns(20);
         txtarea.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -222,54 +210,53 @@ public class withdraw extends javax.swing.JInternalFrame {
         timebox.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         timebox.setText("Time");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(datebox, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(timebox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jLabel2)
-                            .addGap(312, 312, 312)
+                            .addGap(317, 317, 317)
                             .addComponent(jLabel1))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(23, 23, 23)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
+                            .addGap(28, 28, 28)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                                .addGap(32, 32, 32)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(datebox)
-                            .addComponent(timebox))))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(datebox)
+                    .addComponent(timebox))
                 .addContainerGap())
         );
 
@@ -277,29 +264,25 @@ public class withdraw extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void findboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_findboxActionPerformed
-
     private void findbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findbtnActionPerformed
-        if(findbox.getText().isEmpty()){
+        if(accnobox.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Please Enter Account Number");
         }else{
-            int search = Integer.parseInt(findbox.getText());
-            if(search>=1 && search<=500){
+            int accno = Integer.parseInt(accnobox.getText());
+            if(accno>=1 && accno<=500){
                 try {
                     pst = con.prepareStatement("SELECT memberid,fname,lname FROM member WHERE memberid = ?");
-                    pst.setInt(1, search);
+                    pst.setInt(1, accno);
                     rs = pst.executeQuery();
                     if(rs.next()==false){
                         JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
@@ -313,7 +296,7 @@ public class withdraw extends javax.swing.JInternalFrame {
                         typebox.setText("Member");
 
                         pst = con.prepareStatement("SELECT balance FROM memberacc WHERE accno = ?");
-                        pst.setInt(1, search);
+                        pst.setInt(1, accno);
                         rs = pst.executeQuery();
                         if(rs.next()==false){
                             JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
@@ -322,14 +305,13 @@ public class withdraw extends javax.swing.JInternalFrame {
                             amountbox.setText(balance);
                         }
                     }
-
                 } catch (Exception e) {
                 }
             }else{
-                if(search>=501 && search<=700){
+                if(accno>=501 && accno<=700){
                     try {
                         pst = con.prepareStatement("SELECT childid,fname,lname FROM child WHERE childid = ?");
-                        pst.setInt(1, search);
+                        pst.setInt(1, accno);
                         rs = pst.executeQuery();
                         if(rs.next()==false){
                             JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
@@ -343,7 +325,7 @@ public class withdraw extends javax.swing.JInternalFrame {
                             typebox.setText("Child");
 
                             pst = con.prepareStatement("SELECT balance FROM childacc WHERE accno = ?");
-                            pst.setInt(1, search);
+                            pst.setInt(1, accno);
                             rs = pst.executeQuery();
                             if(rs.next()==false){
                                 JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
@@ -354,11 +336,10 @@ public class withdraw extends javax.swing.JInternalFrame {
                         }
                     } catch (Exception e) {
                     }
-
                 }else{
                     try {
                         pst = con.prepareStatement("SELECT nonmemid,fname,lname FROM nonmember WHERE nonmemid = ?");
-                        pst.setInt(1, search);
+                        pst.setInt(1, accno);
                         rs = pst.executeQuery();
                         if(rs.next()==false){
                             JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
@@ -372,7 +353,7 @@ public class withdraw extends javax.swing.JInternalFrame {
                             typebox.setText("Non-Member");
 
                             pst = con.prepareStatement("SELECT balance FROM nonmemberacc WHERE accno = ?");
-                            pst.setInt(1, search);
+                            pst.setInt(1, accno);
                             rs = pst.executeQuery();
                             if(rs.next()==true){
                                 String balance =  rs.getString("balance");
@@ -386,17 +367,17 @@ public class withdraw extends javax.swing.JInternalFrame {
                 }
             }
         }
-        findbox.setText("");
+        accnobox.setText("");
     }//GEN-LAST:event_findbtnActionPerformed
 
-    private void withdrawbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawbtnActionPerformed
-        if(withdrawbox.getText().isEmpty() || idbox.getText().equals("ID") || namebox.getText().equals("Name") || typebox.getText().equals("Acc Type") || amountbox.getText().equals("Amount")){
+    private void depositbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbtnActionPerformed
+        if(depositbox.getText().isEmpty() || idbox.getText().equals("ID") || namebox.getText().equals("Name") || typebox.getText().equals("Acc Type") || amountbox.getText().equals("Amount")){
             JOptionPane.showMessageDialog(null, "Some feild is Empty","Information",JOptionPane.INFORMATION_MESSAGE);
         }else{
+            int deposit = Integer.parseInt(depositbox.getText());
             int amount = Integer.parseInt(amountbox.getText());
-            int withdraw = Integer.parseInt(withdrawbox.getText());
-            if((amount-500)<=withdraw){
-                JOptionPane.showMessageDialog(null, "Your account balance is not sufficient to complete your transaction ","Information",JOptionPane.INFORMATION_MESSAGE);
+            if(deposit<=99){
+                JOptionPane.showMessageDialog(null, "The minimum amount you can deposit is Rs.100/= ","Information",JOptionPane.INFORMATION_MESSAGE);
             }else{
                 String time;
                 String date;
@@ -411,41 +392,36 @@ public class withdraw extends javax.swing.JInternalFrame {
                 accno =  Integer.parseInt(idbox.getText());
 
                 try {
-                    int sum = Integer.parseInt(amountbox.getText()) - Integer.parseInt(withdrawbox.getText());
+                    int sum = Integer.parseInt(amountbox.getText()) + Integer.parseInt(depositbox.getText());
                     String sum1 = String.valueOf(sum);
-                    String sql = "INSERT INTO withdraw (accno,name,amount,balance,acc_type,date,time) VALUES ('"+accno+"','"+name+"','"+withdraw+"','"+sum1+"','"+type+"','"+date+"','"+time+"')";
+                    String sql = "INSERT INTO deposit (accno,name,amount,balance,acc_type,date,time) VALUES ('"+accno+"','"+name+"','"+deposit+"','"+sum1+"','"+type+"','"+date+"','"+time+"')";
                     pst = con.prepareStatement(sql);
                     pst.execute();
                     if(accno>=1 && accno<=500){
                         String sq = "UPDATE memberacc SET balance='"+sum1+"' WHERE accno= '"+accno+"'";
                         pst = con.prepareStatement(sq);
                         pst.execute();
-                        JOptionPane.showMessageDialog(null,"Withdraw Succesfull");
+                        JOptionPane.showMessageDialog(null,"Deposit Succesfull");
                     }else{
                         if(accno>=501 && accno<=700){
                             String sq = "UPDATE childacc SET balance='"+sum1+"' WHERE accno= '"+accno+"'";
                             pst = con.prepareStatement(sq);
                             pst.execute();
-                            JOptionPane.showMessageDialog(null,"Withdraw Succesfull");
+                            JOptionPane.showMessageDialog(null,"Deposit Succesfull");
                         }else{
                             String sq = "UPDATE nonmemberacc SET balance='"+sum1+"' WHERE accno= '"+accno+"'";
                             pst = con.prepareStatement(sq);
                             pst.execute();
-                            JOptionPane.showMessageDialog(null,"Withdraw Succesfull");
+                            JOptionPane.showMessageDialog(null,"Deposit Succesfull");
                         }
                     }
-
                 } catch (Exception e) {
                 }
-                print();
-                clear();
             }
+            print();
         }
-    }//GEN-LAST:event_withdrawbtnActionPerformed
-
-    private void clearbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearbtnActionPerformed
         clear();
-    }//GEN-LAST:event_clearbtnActionPerformed
+    }//GEN-LAST:event_depositbtnActionPerformed
 
     private void printbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printbtnActionPerformed
         if(txtarea.getText().isEmpty()){
@@ -453,29 +429,30 @@ public class withdraw extends javax.swing.JInternalFrame {
         }else{
             try {
                 txtarea.print();
+
             } catch (PrinterException ex) {
                 Logger.getLogger(withdraw.class.getName()).log(Level.SEVERE, null, ex);
             }
+            txtarea.setText("");
         }
-        txtarea.setText("");
     }//GEN-LAST:event_printbtnActionPerformed
 
-    public void clear(){
-        findbox.setText("");
+ public void clear(){
+        accnobox.setText("");
         idbox.setText("ID");
         namebox.setText("Name");
         typebox.setText("Acc Type");
-        withdrawbox.setText("");
+        depositbox.setText("");
         amountbox.setText("Amount");
     }
-    public void print(){
+   
+      public void print(){
          String time = timebox.getText();;
            String date =datebox.getText() ;
            int accno = Integer.parseInt(idbox.getText());
            String name =namebox.getText();
            String type =typebox.getText();
-           int withdraw =Integer.parseInt(withdrawbox.getText());
-       int sum = Integer.parseInt(amountbox.getText()) - withdraw;
+           int deposit =Integer.parseInt(depositbox.getText());
        
        txtarea.setText(txtarea.getText()+"      "+"       SANASA BANK \n");
        txtarea.setText(txtarea.getText()+" \n");
@@ -490,15 +467,12 @@ public class withdraw extends javax.swing.JInternalFrame {
        txtarea.setText(txtarea.getText()+"\n");
        txtarea.setText(txtarea.getText()+"     "+"Account type   :  "+type+"\n");
        txtarea.setText(txtarea.getText()+"\n");
-       txtarea.setText(txtarea.getText()+"     "+"Withdrawal     :  Rs."+withdraw+".00/="+"\n");
-       txtarea.setText(txtarea.getText()+"\n");
-       txtarea.setText(txtarea.getText()+"     "+"Ledger Balance :  Rs."+sum+".00/="+"\n");
-       txtarea.setText(txtarea.getText()+"\n");
-       txtarea.setText(txtarea.getText()+"\n");
+       txtarea.setText(txtarea.getText()+"     "+"Deposit amount :  Rs."+deposit+".00/="+"\n");
+       txtarea.setText(txtarea.getText()+"\n"+"\n");
        txtarea.setText(txtarea.getText()+"     "+"      Thank You come again \n");
      }
-    
-    public void setDateTime() {
+      
+     public void setDateTime() {
         
         Calendar c = Calendar.getInstance();
         hour= c.get(Calendar.HOUR_OF_DAY);
@@ -517,23 +491,25 @@ public class withdraw extends javax.swing.JInternalFrame {
         timebox.setText(timestr);
         datebox.setText(yearstr);
                
+
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField accnobox;
     private javax.swing.JLabel amountbox;
     private javax.swing.JButton clearbtn;
     private javax.swing.JLabel datebox;
-    private javax.swing.JTextField findbox;
+    private javax.swing.JTextField depositbox;
+    private javax.swing.JButton depositbtn;
     private javax.swing.JButton findbtn;
     private javax.swing.JLabel idbox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -543,7 +519,5 @@ public class withdraw extends javax.swing.JInternalFrame {
     private javax.swing.JLabel timebox;
     private javax.swing.JTextArea txtarea;
     private javax.swing.JLabel typebox;
-    private javax.swing.JTextField withdrawbox;
-    private javax.swing.JButton withdrawbtn;
     // End of variables declaration//GEN-END:variables
 }
