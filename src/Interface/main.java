@@ -203,6 +203,11 @@ public class main extends javax.swing.JFrame {
         jMenuItem6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem6.setText("Withdraw");
         jMenuItem6.setPreferredSize(new java.awt.Dimension(160, 35));
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem6);
         jMenu3.add(jSeparator6);
 
@@ -428,6 +433,11 @@ public class main extends javax.swing.JFrame {
         account m1 =new account();
         deskstoppane.add(m1).setVisible(true); 
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        withdraw m1 =new withdraw();
+        deskstoppane.add(m1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
