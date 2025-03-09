@@ -302,6 +302,11 @@ public class main extends javax.swing.JFrame {
         jMenuItem12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem12.setText("Non - member");
         jMenuItem12.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu9.add(jMenuItem12);
         jMenu9.add(jSeparator12);
 
@@ -503,6 +508,11 @@ public class main extends javax.swing.JFrame {
         balance m1 =new balance();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+       nonmembertable m1 =new nonmembertable();
+        deskstoppane.add(m1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments

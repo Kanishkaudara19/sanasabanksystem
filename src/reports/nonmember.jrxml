@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a71ab3de-72a5-4410-9db2-8f5af918f23f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="nonid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     nonmember.`nonmemid` AS nonmember_nonmemid,
+     nonmember.`fname` AS nonmember_fname,
+     nonmember.`lname` AS nonmember_lname,
+     nonmember.`address` AS nonmember_address,
+     nonmember.`dob` AS nonmember_dob,
+     nonmember.`phoneno` AS nonmember_phoneno,
+     nonmember.`employment` AS nonmember_employment,
+     nonmember.`soname` AS nonmember_soname,
+     nonmember.`soaddress` AS nonmember_soaddress,
+     nonmember.`sonicno` AS nonmember_sonicno,
+     nonmember.`relationship` AS nonmember_relationship,
+     nonmember.`date` AS nonmember_date,
+     nonmember.`time` AS nonmember_time
+FROM
+     `nonmember` nonmember WHERE nonmember.`nonmemid`=$P{nonid}]]>
+	</queryString>
+	<field name="nonmember_nonmemid" class="java.lang.Integer"/>
+	<field name="nonmember_fname" class="java.lang.String"/>
+	<field name="nonmember_lname" class="java.lang.String"/>
+	<field name="nonmember_address" class="java.lang.String"/>
+	<field name="nonmember_dob" class="java.lang.String"/>
+	<field name="nonmember_phoneno" class="java.lang.String"/>
+	<field name="nonmember_employment" class="java.lang.String"/>
+	<field name="nonmember_soname" class="java.lang.String"/>
+	<field name="nonmember_soaddress" class="java.lang.String"/>
+	<field name="nonmember_sonicno" class="java.lang.String"/>
+	<field name="nonmember_relationship" class="java.lang.String"/>
+	<field name="nonmember_date" class="java.lang.String"/>
+	<field name="nonmember_time" class="java.lang.String"/>
+	<group name="other">
+		<groupFooter>
+			<band height="70">
+				<staticText>
+					<reportElement x="0" y="43" width="209" height="20" uuid="23d979bc-8c68-4180-b103-0bf0af243c2c"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[13. Time of registration]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="0" width="209" height="20" uuid="4d3bc784-613e-4995-9f0c-8ef1cf41b429"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[12. Date of registration]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="223" y="0" width="322" height="20" uuid="51e0029e-7a28-4ebf-9a82-939404810ab9"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nonmember_date}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="223" y="43" width="322" height="20" uuid="ec042195-9fe5-4a4f-bb35-392aca511178"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nonmember_time}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="145" splitType="Stretch">
+			<staticText>
+				<reportElement x="120" y="0" width="324" height="46" uuid="c5511189-c4b5-4199-9c0b-7a8e016ce20b"/>
+				<textElement>
+					<font fontName="Serif" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Non-Member Details]]></text>
+			</staticText>
+			<image>
+				<reportElement x="223" y="46" width="119" height="97" uuid="eb958189-04c0-4aac-82c1-305b51322bfb"/>
+				<imageExpression><![CDATA["G:\\sanasabaanksytem\\src\\Images\\report.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="541" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="11" width="153" height="20" uuid="b88eb988-4204-410f-bac1-2d57dbe0fe9c"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1. Non-Member ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="223" y="11" width="322" height="20" uuid="49cdcffa-f3a2-4ba4-9f3c-e7e7b92a3cf6"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nonmember_nonmemid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="159" width="100" height="20" uuid="3c124446-3f4f-4048-82ed-6f01f282eb00"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4. Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="465" width="209" height="20" uuid="8e4a30f5-f666-46b9-9d52-670b41bf2074"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[10. Post-owner's N.I.C No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="107" width="100" height="20" uuid="7896bdd0-c880-40a1-82d0-0ff05cf7572f"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3. Last Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="56" width="209" height="20" uuid="9e3ddef4-56d3-4b3e-9576-62b4ae60a3bb"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2. First Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="412" width="209" height="20" uuid="9a88583f-422e-4761-bf8e-791d4ad1c9df"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[9. Address of post-owner]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="211" width="209" height="20" uuid="5fbc9ad6-2386-4971-bf4c-88c648e427ca"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5. Date of birth]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="515" width="209" height="20" uuid="c8e05052-6d87-4c21-a946-46038d12028b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[11. Relationship]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="263" width="209" height="20" uuid="b4115eaf-c0c8-4513-a6f5-5a40e11aed5a"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6. Phone Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="360" width="174" height="20" uuid="de868309-db71-465c-8c89-ec11d38bef13"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8. Name of post-owner]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="310" width="209" height="20" uuid="d08b5d16-ac65-45ae-aa5b-4d46c9137dce"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[7. Employment]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="223" y="56" width="322" height="20" uuid="cf44a62a-7a67-4c39-b481-b61cd2890b53"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nonmember_fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="107" width="322" height="20" uuid="4736b98d-665b-43d3-96be-7d4b1c831c57"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nonmember_lname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="159" width="322" height="20" uuid="c6885958-2ff2-4a2c-a9dc-f62b7bea3a81"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nonmember_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="211" width="322" height="20" uuid="7296392f-b91d-4e45-bf41-c1ceee22822e"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nonmember_dob}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="263" width="322" height="20" uuid="0b4ebda7-41e0-4019-bdee-09541aa72aac"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nonmember_phoneno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="310" width="322" height="20" uuid="deab5e47-0df4-47f6-9129-70fe8ce0b774"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nonmember_employment}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="360" width="322" height="20" uuid="f0e9dee8-b466-450b-9e6f-9fb4e9c2ce54"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nonmember_soname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="412" width="322" height="20" uuid="c6d77c6b-dccd-4006-bfa9-28858f7fe6b2"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nonmember_soaddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="465" width="322" height="20" uuid="5ae97891-7e61-4627-97d0-aa4ad4362c42"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nonmember_sonicno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="515" width="322" height="20" uuid="016fe000-bad1-40eb-9bd6-a253b29d0292"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nonmember_relationship}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="247" y="34" width="35" height="20" uuid="0c0ab69c-55b8-464f-9add-d0cbe680c956"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Page]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="282" y="34" width="100" height="20" uuid="73840972-d406-4cd8-b379-d9b453894ad4"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
