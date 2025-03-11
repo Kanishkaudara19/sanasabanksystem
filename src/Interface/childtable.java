@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Interface;
+
 import Code.DBconnect;
 import java.awt.Color;
 import java.awt.Font;
@@ -25,76 +26,77 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author acer
  */
-public class nonmembertable extends javax.swing.JInternalFrame {
+public class childtable extends javax.swing.JInternalFrame {
 
+    /**
+     * Creates new form childtable
+     */     
     Connection con=null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    /**
-     * Creates new form nonmembertable
-     */
-    public nonmembertable() {
-        initComponents();
-       con = DBconnect.connect();
-       tableload();
-    }
     
+    public childtable() {
+        initComponents();
+        con = DBconnect.connect();
+        tableload();
+    }
     private void theader(){
-        JTableHeader thead = nonmemtable.getTableHeader();
+        JTableHeader thead = childtable.getTableHeader();
         thead.setForeground(Color.BLUE);
         
         thead.setFont(new Font("Tahome", Font.BOLD, 12));
     }
-    
-    public void tableload(){
+
+   public void tableload(){
         try {
-            String sql = "SELECT * FROM nonmember";
+            String sql = "SELECT childid,fname,lname,dob,address,trusteename,trusteeaddress,trusteenic,trusteephoneno,date,time FROM child";
             
             pst =con.prepareStatement(sql);
             rs = pst.executeQuery();
-            nonmemtable.setModel(DbUtils.resultSetToTableModel(rs));
-            nonmemtable.setBackground(Color.LIGHT_GRAY);
-            nonmemtable.setFont(new Font("Times New Roman", Font.BOLD, 13));
-            TableColumn col1=nonmemtable.getColumnModel().getColumn(9);
-            col1.setPreferredWidth(90);
-            TableColumn col2=nonmemtable.getColumnModel().getColumn(5);
-            col2.setPreferredWidth(70);
-            TableColumn col3=nonmemtable.getColumnModel().getColumn(0);
+            childtable.setModel(DbUtils.resultSetToTableModel(rs));
+            childtable.setBackground(Color.LIGHT_GRAY);
+            childtable.setFont(new Font("Times New Roman", Font.BOLD, 13));
+            TableColumn col1=childtable.getColumnModel().getColumn(9);
+            col1.setPreferredWidth(45);
+            TableColumn col2=childtable.getColumnModel().getColumn(5);
+            col2.setPreferredWidth(50);
+            TableColumn col3=childtable.getColumnModel().getColumn(0);
             col3.setPreferredWidth(60);
-            TableColumn col4=nonmemtable.getColumnModel().getColumn(10);
+            TableColumn col4=childtable.getColumnModel().getColumn(10);
             col4.setPreferredWidth(70);
            theader();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
         
-    }
+        }
     
-    public void search(){
+   public void search(){
     
     String srch = searchbox.getText();
         try {
-         String sql = "SElECT * FROM nonmember WHERE nonmemid='"+srch+"'"; 
+         String sql = "SElECT * FROM child WHERE childid='"+srch+"'"; 
           pst = con.prepareStatement(sql);
          rs = pst.executeQuery();
-         nonmemtable.setModel(DbUtils.resultSetToTableModel(rs));
+         childtable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (Exception e) {
         }
     
     }
-    
+   
     public void print (){
         int id = Integer.parseInt(searchbox.getText());
-             if(id>=701){
+             if(id>=501 && id<=700){
                         try {
             HashMap m =new HashMap();
-            m.put("nonid", searchbox.getText());
+            m.put("chid", searchbox.getText());
             
-            JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\nonmember.jrxml");
+            JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\child.jrxml");
             JasperReport jreport = JasperCompileManager.compileReport(jdesign);
             JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
             
@@ -105,8 +107,9 @@ public class nonmembertable extends javax.swing.JInternalFrame {
             Logger.getLogger(loantable.class.getName()).log(Level.SEVERE, null, ex);
         } 
              }else{
-                 JOptionPane.showMessageDialog(null, "The Non-member ID can only used on numbers above 700."); 
+                 JOptionPane.showMessageDialog(null, "The Child ID can only use number 501 to 700."); 
              }
+
     }
 
     /**
@@ -127,22 +130,22 @@ public class nonmembertable extends javax.swing.JInternalFrame {
         reportbtn = new javax.swing.JButton();
         printbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        nonmemtable = new javax.swing.JTable();
+        childtable = new javax.swing.JTable();
 
         setBorder(null);
         setClosable(true);
         setIconifiable(true);
-        setPreferredSize(new java.awt.Dimension(1247, 600));
+        setPreferredSize(new java.awt.Dimension(1120, 600));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Non - member Registration Details");
+        jLabel1.setText("Child Registration Details");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sanasa2.png"))); // NOI18N
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Please Enter Non-member ID"));
+        jPanel3.setBackground(java.awt.SystemColor.controlHighlight);
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Please Enter Child ID"));
         jPanel3.setLayout(null);
 
         searchbox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -187,7 +190,7 @@ public class nonmembertable extends javax.swing.JInternalFrame {
         jPanel3.add(printbtn);
         printbtn.setBounds(490, 30, 90, 30);
 
-        nonmemtable.setModel(new javax.swing.table.DefaultTableModel(
+        childtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -198,39 +201,39 @@ public class nonmembertable extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(nonmemtable);
+        jScrollPane1.setViewportView(childtable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(307, 307, 307))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(292, 292, 292))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(231, 231, 231))))
             .addComponent(jScrollPane1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(7, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -264,7 +267,7 @@ public class nonmembertable extends javax.swing.JInternalFrame {
 
     private void reportbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Non-Member ID");
+            JOptionPane.showMessageDialog(null, "Please Enter Child ID");
         }else{
             print ();
         }
@@ -272,15 +275,15 @@ public class nonmembertable extends javax.swing.JInternalFrame {
 
     private void printbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter non-member ID");
+            JOptionPane.showMessageDialog(null, "Please Enter Child ID");
         }else{
             int id = Integer.parseInt(searchbox.getText());
-            if(id>=701 ){
+            if(id>=501 && id<=700){
                 try {
                     HashMap m =new HashMap();
-                    m.put("nonid", searchbox.getText());
+                    m.put("chid", searchbox.getText());
 
-                    JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\nonmember.jrxml");
+                    JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\child.jrxml");
                     JasperReport jreport = JasperCompileManager.compileReport(jdesign);
                     JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
 
@@ -290,7 +293,7 @@ public class nonmembertable extends javax.swing.JInternalFrame {
                     Logger.getLogger(loantable.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "The Non-member ID can only used on numbers above 700.");
+                JOptionPane.showMessageDialog(null, "The Child ID can only use number 501 to 700.");
             }
 
         }
@@ -298,12 +301,12 @@ public class nonmembertable extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable childtable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable nonmemtable;
     private javax.swing.JButton printbtn;
     private javax.swing.JButton reportbtn;
     private javax.swing.JTextField searchbox;

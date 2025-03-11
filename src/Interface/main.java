@@ -313,6 +313,11 @@ public class main extends javax.swing.JFrame {
         jMenuItem13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem13.setText("Child");
         jMenuItem13.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu9.add(jMenuItem13);
 
         jMenu5.add(jMenu9);
@@ -513,6 +518,11 @@ public class main extends javax.swing.JFrame {
        nonmembertable m1 =new nonmembertable();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        childtable m1 =new childtable();
+        deskstoppane.add(m1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**
      * @param args the command line arguments
