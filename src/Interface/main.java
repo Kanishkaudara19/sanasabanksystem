@@ -352,6 +352,11 @@ public class main extends javax.swing.JFrame {
         jMenuItem19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem19.setText("Child");
         jMenuItem19.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
         jMenu10.add(jMenuItem19);
 
         jMenu5.add(jMenu10);
@@ -488,7 +493,7 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-         deposit m1 =new deposit();
+        deposit m1 =new deposit();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
@@ -505,7 +510,7 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu7MouseClicked
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-         loan m1 =new loan();
+        loan m1 =new loan();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
@@ -515,7 +520,7 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-       membertable m1 =new membertable();
+        membertable m1 =new membertable();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
@@ -525,7 +530,7 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-       nonmembertable m1 =new nonmembertable();
+        nonmembertable m1 =new nonmembertable();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
@@ -540,9 +545,14 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-         naccounttable m1 =new naccounttable();
+        naccounttable m1 =new naccounttable();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
+
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+         caccounttable m1 =new caccounttable();
+        deskstoppane.add(m1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
 
     /**
      * @param args the command line arguments
