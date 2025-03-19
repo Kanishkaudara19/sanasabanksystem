@@ -284,7 +284,7 @@ public class main extends javax.swing.JFrame {
         jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu5.setPreferredSize(new java.awt.Dimension(220, 31));
 
-        jMenu9.setText("Account");
+        jMenu9.setText("Registration");
         jMenu9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenu9.setPreferredSize(new java.awt.Dimension(220, 35));
 
@@ -323,13 +323,18 @@ public class main extends javax.swing.JFrame {
         jMenu5.add(jMenu9);
         jMenu5.add(jSeparator1);
 
-        jMenu10.setText("Registration");
+        jMenu10.setText("Account");
         jMenu10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenu10.setPreferredSize(new java.awt.Dimension(220, 35));
 
         jMenuItem17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem17.setText("Member");
         jMenuItem17.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
         jMenu10.add(jMenuItem17);
         jMenu10.add(jSeparator11);
 
@@ -523,6 +528,11 @@ public class main extends javax.swing.JFrame {
         childtable m1 =new childtable();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        maccounttable m1 =new maccounttable();
+        deskstoppane.add(m1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     /**
      * @param args the command line arguments

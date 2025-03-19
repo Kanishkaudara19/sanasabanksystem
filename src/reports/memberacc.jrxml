@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null"  pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7838b0f8-73c0-4063-aafd-27aa6fabca21">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="66"/>
+	<parameter name="accno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     memberacc.`accno` AS memberacc_accno,
+     memberacc.`memberid` AS memberacc_memberid,
+     memberacc.`name` AS memberacc_name,
+     memberacc.`balance` AS memberacc_balance,
+     memberacc.`date` AS memberacc_date,
+     memberacc.`time` AS memberacc_time
+FROM
+     `memberacc` memberacc WHERE memberacc.`accno`=$P{accno}]]>
+	</queryString>
+	<field name="memberacc_accno" class="java.lang.Integer"/>
+	<field name="memberacc_memberid" class="java.lang.Integer"/>
+	<field name="memberacc_name" class="java.lang.String"/>
+	<field name="memberacc_balance" class="java.lang.Integer"/>
+	<field name="memberacc_date" class="java.lang.String"/>
+	<field name="memberacc_time" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="161" splitType="Stretch">
+			<image>
+				<reportElement x="210" y="47" width="146" height="110" uuid="29d2d38b-85bc-4e4e-a9b2-f64b9e4ad392"/>
+				<imageExpression><![CDATA["G:\\sanasabaanksytem\\src\\Images\\report.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="80" y="0" width="396" height="47" uuid="1ad4814e-652b-4b65-a8c7-56713000b490"/>
+				<textElement>
+					<font fontName="Serif" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Member Account Details]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="258" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="13" width="209" height="20" uuid="efccafd6-40c1-4f1e-8d15-c8c602bae94e"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1. Member ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="102" width="209" height="20" uuid="d402b3c2-3b2b-4840-9900-283f1e2eb5c2"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3. Full Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="224" y="13" width="312" height="20" uuid="94ec56a8-8806-46b8-b4cf-6896c981d542"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{memberacc_memberid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="56" width="136" height="20" uuid="3c8ac720-af5e-4d12-8024-f5b703e83ff1"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2. Account No               :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="147" width="173" height="20" uuid="7971f69c-6c25-465f-8b73-dd3506b3822d"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4. Account Balance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="192" width="174" height="20" uuid="12cba54d-3ce4-4c1e-8009-87717db0cd11"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5. Account Opening Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="233" width="222" height="20" uuid="9dec5848-0f26-48cd-bc10-ad2140ba0656"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6. Account Opening Time]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="224" y="56" width="312" height="20" uuid="a2178d50-b4d3-48c1-a866-33bfd2e89853"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{memberacc_accno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="102" width="312" height="20" uuid="8d40b03c-971e-4552-8e87-d2a0495562c4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{memberacc_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="243" y="147" width="302" height="20" uuid="f7cbab5e-d3c2-407f-9871-9985d9d82ca0"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{memberacc_balance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="192" width="312" height="20" uuid="1f3601a0-700c-4a56-83f3-df5068c61dbf"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{memberacc_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="233" width="312" height="20" uuid="0c224f2a-f729-4fae-a51b-3b47688ff4f1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{memberacc_time}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="224" y="147" width="19" height="20" uuid="a86caf62-270c-4d2d-8cde-0143115103cd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rs.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="250" y="34" width="31" height="20" uuid="6b7fb747-41e8-4661-9ae0-d5df4e6fe05f"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Page]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="283" y="34" width="100" height="20" uuid="f41bb1da-5849-46e1-859b-31fe12183a0b"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="81" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="15" y="30" width="100" height="20" uuid="c293b87b-7886-4994-9e42-1089900f89af"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="33" y="50" width="33" height="20" uuid="77e2ef00-6fac-4668-9ded-1fd0228585e4"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="464" y="50" width="37" height="20" uuid="e22acd4f-601f-4741-be77-f3c6b5c1aaa2"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<textField pattern="h.mm a">
+				<reportElement x="451" y="30" width="85" height="20" uuid="df8c3565-fe56-4355-8d9c-ea77a72e8cd5"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
