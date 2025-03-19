@@ -341,6 +341,11 @@ public class main extends javax.swing.JFrame {
         jMenuItem18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem18.setText("Non - member");
         jMenuItem18.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
         jMenu10.add(jMenuItem18);
         jMenu10.add(jSeparator10);
 
@@ -533,6 +538,11 @@ public class main extends javax.swing.JFrame {
         maccounttable m1 =new maccounttable();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+         naccounttable m1 =new naccounttable();
+        deskstoppane.add(m1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     /**
      * @param args the command line arguments
