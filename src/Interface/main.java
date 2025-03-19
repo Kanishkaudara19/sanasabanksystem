@@ -397,6 +397,11 @@ public class main extends javax.swing.JFrame {
         jMenuItem22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem22.setText("Loans");
         jMenuItem22.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem22ActionPerformed(evt);
+            }
+        });
         jMenu12.add(jMenuItem22);
         jMenu12.add(jSeparator14);
 
@@ -573,6 +578,11 @@ public class main extends javax.swing.JFrame {
         deposittable m1 =new deposittable();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem21ActionPerformed
+
+    private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
+        loantable m1 =new loantable();
+        deskstoppane.add(m1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem22ActionPerformed
 
     /**
      * @param args the command line arguments
