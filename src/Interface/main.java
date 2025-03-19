@@ -369,12 +369,22 @@ public class main extends javax.swing.JFrame {
         jMenuItem20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem20.setText("Withdraw");
         jMenuItem20.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem20ActionPerformed(evt);
+            }
+        });
         jMenu11.add(jMenuItem20);
         jMenu11.add(jSeparator13);
 
         jMenuItem21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem21.setText("Deposit");
         jMenuItem21.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
         jMenu11.add(jMenuItem21);
 
         jMenu5.add(jMenu11);
@@ -553,6 +563,16 @@ public class main extends javax.swing.JFrame {
          caccounttable m1 =new caccounttable();
         deskstoppane.add(m1).setVisible(true);
     }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
+        withdrawtable m1 =new withdrawtable();
+        deskstoppane.add(m1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem20ActionPerformed
+
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+        deposittable m1 =new deposittable();
+        deskstoppane.add(m1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
 
     /**
      * @param args the command line arguments
