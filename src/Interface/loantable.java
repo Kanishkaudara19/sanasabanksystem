@@ -32,6 +32,7 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author acer
  */
 public class loantable extends javax.swing.JInternalFrame {
+    String currentDirectory = System.getProperty("user.dir");
     Connection con=null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -51,7 +52,7 @@ public class loantable extends javax.swing.JInternalFrame {
             HashMap m =new HashMap();
             m.put("memid", memidbox.getText());
             
-            JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\loan.jrxml");
+            JasperDesign jdesign = JRXmlLoader.load(currentDirectory + "\\src\\reports\\loan.jrxml");
             JasperReport jreport = JasperCompileManager.compileReport(jdesign);
             JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
             
@@ -329,7 +330,7 @@ public class loantable extends javax.swing.JInternalFrame {
                     HashMap m =new HashMap();
                     m.put("memid", memidbox.getText());
 
-                    JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\loan.jrxml");
+                    JasperDesign jdesign = JRXmlLoader.load(currentDirectory + "\\src\\reports\\loan.jrxml");
                     JasperReport jreport = JasperCompileManager.compileReport(jdesign);
                     JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
 

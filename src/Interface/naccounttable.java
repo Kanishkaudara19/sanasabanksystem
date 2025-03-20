@@ -32,6 +32,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class naccounttable extends javax.swing.JInternalFrame {
 
+    String currentDirectory = System.getProperty("user.dir");
     Connection con=null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -85,7 +86,7 @@ public class naccounttable extends javax.swing.JInternalFrame {
             HashMap m =new HashMap();
             m.put("accno", searchbox.getText());
             
-            JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\nonmemberacc.jrxml");
+            JasperDesign jdesign = JRXmlLoader.load(currentDirectory + "\\src\\reports\\nonmemberacc.jrxml");
             JasperReport jreport = JasperCompileManager.compileReport(jdesign);
             JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
             
@@ -268,7 +269,7 @@ public class naccounttable extends javax.swing.JInternalFrame {
                     HashMap m =new HashMap();
                     m.put("accno", searchbox.getText());
 
-                    JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\nonmemberacc.jrxml");
+                    JasperDesign jdesign = JRXmlLoader.load(currentDirectory + "\\src\\reports\\nonmemberacc.jrxml");
                     JasperReport jreport = JasperCompileManager.compileReport(jdesign);
                     JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
 

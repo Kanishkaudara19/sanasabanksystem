@@ -36,6 +36,7 @@ public class childtable extends javax.swing.JInternalFrame {
     /**
      * Creates new form childtable
      */     
+    String currentDirectory = System.getProperty("user.dir");
     Connection con=null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -96,7 +97,7 @@ public class childtable extends javax.swing.JInternalFrame {
             HashMap m =new HashMap();
             m.put("chid", searchbox.getText());
             
-            JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\child.jrxml");
+            JasperDesign jdesign = JRXmlLoader.load(currentDirectory + "\\src\\reports\\child.jrxml");
             JasperReport jreport = JasperCompileManager.compileReport(jdesign);
             JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
             
@@ -283,7 +284,7 @@ public class childtable extends javax.swing.JInternalFrame {
                     HashMap m =new HashMap();
                     m.put("chid", searchbox.getText());
 
-                    JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\child.jrxml");
+                    JasperDesign jdesign = JRXmlLoader.load(currentDirectory + "\\src\\reports\\child.jrxml");
                     JasperReport jreport = JasperCompileManager.compileReport(jdesign);
                     JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
 

@@ -31,6 +31,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class withdrawtable extends javax.swing.JInternalFrame {
 
+    String currentDirectory = System.getProperty("user.dir");
     Connection con=null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -84,7 +85,7 @@ public class withdrawtable extends javax.swing.JInternalFrame {
             HashMap m =new HashMap();
             m.put("accno", searchbox.getText());
             
-            JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\withdraw.jrxml");
+            JasperDesign jdesign = JRXmlLoader.load(currentDirectory + "\\src\\reports\\withdraw.jrxml");
             JasperReport jreport = JasperCompileManager.compileReport(jdesign);
             JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
             
@@ -264,7 +265,7 @@ public class withdrawtable extends javax.swing.JInternalFrame {
                 HashMap m =new HashMap();
                 m.put("accno", searchbox.getText());
 
-                JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\withdraw.jrxml");
+                JasperDesign jdesign = JRXmlLoader.load(currentDirectory + "\\src\\reports\\withdraw.jrxml");
                 JasperReport jreport = JasperCompileManager.compileReport(jdesign);
                 JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
 

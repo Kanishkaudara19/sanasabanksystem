@@ -31,6 +31,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class nonmembertable extends javax.swing.JInternalFrame {
 
+    String currentDirectory = System.getProperty("user.dir");
     Connection con=null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -94,7 +95,7 @@ public class nonmembertable extends javax.swing.JInternalFrame {
             HashMap m =new HashMap();
             m.put("nonid", searchbox.getText());
             
-            JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\nonmember.jrxml");
+            JasperDesign jdesign = JRXmlLoader.load(currentDirectory + "\\src\\reports\\nonmember.jrxml");
             JasperReport jreport = JasperCompileManager.compileReport(jdesign);
             JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
             
@@ -280,7 +281,7 @@ public class nonmembertable extends javax.swing.JInternalFrame {
                     HashMap m =new HashMap();
                     m.put("nonid", searchbox.getText());
 
-                    JasperDesign jdesign = JRXmlLoader.load("G:\\sanasabaanksytem\\src\\reports\\nonmember.jrxml");
+                    JasperDesign jdesign = JRXmlLoader.load(currentDirectory + "\\src\\reports\\nonmember.jrxml");
                     JasperReport jreport = JasperCompileManager.compileReport(jdesign);
                     JasperPrint jprint = JasperFillManager.fillReport(jreport, m,con);
 
