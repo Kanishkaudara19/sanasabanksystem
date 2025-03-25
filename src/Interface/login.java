@@ -158,7 +158,7 @@ public class login extends javax.swing.JFrame {
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
         if (usernamebox.getText().isEmpty() || passwordbox.getText().isEmpty()){
            
-           JOptionPane.showMessageDialog(null, "Some fields are empty");
+           JOptionPane.showMessageDialog(null, "Some fields are empty", "Error", JOptionPane.ERROR_MESSAGE);
            
        }else{
            String name = usernamebox.getText();
@@ -170,12 +170,12 @@ public class login extends javax.swing.JFrame {
               rs=pst.executeQuery();
               
               if(rs.next()){
-               JOptionPane.showMessageDialog(null, "Login successfull ");
+               JOptionPane.showMessageDialog(null,  "You have successfully logged in!", "Success", JOptionPane.INFORMATION_MESSAGE);
                main m1 = new main();
                m1.setVisible(true);
                this.dispose();
               }else{
-                  JOptionPane.showMessageDialog(null, "Incorrect Username or Password !"); 
+                  JOptionPane.showMessageDialog(null, "Incorrect Username or Password !", "Error", JOptionPane.ERROR_MESSAGE); 
                   
               } 
            } catch (Exception e) {

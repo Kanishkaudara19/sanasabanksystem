@@ -300,7 +300,7 @@ public class withdraw extends javax.swing.JInternalFrame {
                     pst.setInt(1, search);
                     rs = pst.executeQuery();
                     if(rs.next()==false){
-                        JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,  "Invalid Account Number. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
                     }else{
                         String fname =  rs.getString("fname");
                         String lname =  rs.getString("lname");
@@ -314,7 +314,7 @@ public class withdraw extends javax.swing.JInternalFrame {
                         pst.setInt(1, search);
                         rs = pst.executeQuery();
                         if(rs.next()==false){
-                            JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Invalid Account Number. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             String balance =  rs.getString("balance");
                             amountbox.setText(balance);
@@ -330,7 +330,7 @@ public class withdraw extends javax.swing.JInternalFrame {
                         pst.setInt(1, search);
                         rs = pst.executeQuery();
                         if(rs.next()==false){
-                            JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Invalid Account Number. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             String fname =  rs.getString("fname");
                             String lname =  rs.getString("lname");
@@ -344,7 +344,7 @@ public class withdraw extends javax.swing.JInternalFrame {
                             pst.setInt(1, search);
                             rs = pst.executeQuery();
                             if(rs.next()==false){
-                                JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Invalid Account Number. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
                             }else{
                                 String balance =  rs.getString("balance");
                                 amountbox.setText(balance);
@@ -359,7 +359,7 @@ public class withdraw extends javax.swing.JInternalFrame {
                         pst.setInt(1, search);
                         rs = pst.executeQuery();
                         if(rs.next()==false){
-                            JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Invalid Account Number. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             String fname =  rs.getString("fname");
                             String lname =  rs.getString("lname");
@@ -376,7 +376,7 @@ public class withdraw extends javax.swing.JInternalFrame {
                                 String balance =  rs.getString("balance");
                                 amountbox.setText(balance);
                             }else{
-                                JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Invalid Account Number. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
                             }
                         }
                     } catch (Exception e) {
@@ -389,12 +389,12 @@ public class withdraw extends javax.swing.JInternalFrame {
 
     private void withdrawbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawbtnActionPerformed
         if(withdrawbox.getText().isEmpty() || idbox.getText().equals("ID") || namebox.getText().equals("Name") || typebox.getText().equals("Acc Type") || amountbox.getText().equals("Amount")){
-            JOptionPane.showMessageDialog(null, "Some feild is Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Some feild is Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             int amount = Integer.parseInt(amountbox.getText());
             int withdraw = Integer.parseInt(withdrawbox.getText());
             if((amount-500)<=withdraw){
-                JOptionPane.showMessageDialog(null, "Your account balance is not sufficient to complete your transaction ","Information",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Your account balance is not sufficient to complete your transaction ", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 String time;
                 String date;

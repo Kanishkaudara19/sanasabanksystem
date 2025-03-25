@@ -194,7 +194,7 @@ public class membertable extends javax.swing.JInternalFrame {
 
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Search field is Empty");
+            JOptionPane.showMessageDialog(null, "Search field is Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             search();
         }
@@ -202,7 +202,7 @@ public class membertable extends javax.swing.JInternalFrame {
 
     private void repotbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repotbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Member ID");
+            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             print ();
         }
@@ -211,7 +211,7 @@ public class membertable extends javax.swing.JInternalFrame {
 
     private void printbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Member ID");
+            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             int id = Integer.parseInt(searchbox.getText());
             if(id>=1 && id<=500){
@@ -229,7 +229,7 @@ public class membertable extends javax.swing.JInternalFrame {
                     Logger.getLogger(loantable.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "The Member ID can only use number 1 to 500.");
+                JOptionPane.showMessageDialog(null, "The Member ID can only use number 1 to 500.", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -252,7 +252,7 @@ public void print (){
             Logger.getLogger(loantable.class.getName()).log(Level.SEVERE, null, ex);
         }
              }else{
-                 JOptionPane.showMessageDialog(null, "The Member ID can only use number 1 to 500."); 
+                 JOptionPane.showMessageDialog(null, "The Member ID can only use number 1 to 500.", "Error", JOptionPane.ERROR_MESSAGE); 
              }
        
     }

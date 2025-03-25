@@ -756,7 +756,7 @@ public class member extends javax.swing.JInternalFrame {
 
                 if (rs.next()==false){
 
-                    JOptionPane.showMessageDialog(null, "Search item is not found");
+                    JOptionPane.showMessageDialog(null, "Invalid Member ID. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
                 }else
                 {
                     String id = rs.getString("memberid");

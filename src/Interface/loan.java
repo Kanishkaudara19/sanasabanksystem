@@ -1306,7 +1306,7 @@ public class loan extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Information", JOptionPane.INFORMATION_MESSAGE);
         }else{
             if(g1searchbox.getText().equals(g2searchbox.getText()) || g1searchbox.getText().equals(g2idbox.getText())){
-                JOptionPane.showMessageDialog(null, "He has already appeared as a guarantor", "Information", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "He has already appeared as a guarantor", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 if(memidbox.getText().equals(g1searchbox.getText())){
                     JOptionPane.showMessageDialog(null, "He is the borrower", "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -1321,7 +1321,7 @@ public class loan extends javax.swing.JInternalFrame {
                             pst = con.prepareStatement("SElECT memberid,fname,lname,address,nicno,phoneno FROM member WHERE memberid='"+search+"'");
                             rs = pst.executeQuery();
                             if(rs.next()==false){
-                                JOptionPane.showMessageDialog(null, "Search item not found", "Information", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                             }else{
                                 int id =rs.getInt("memberid");
                                 String fname = rs.getString("fname");
@@ -1337,7 +1337,7 @@ public class loan extends javax.swing.JInternalFrame {
                                 g1searchbox.setText("");
                             }
                         }else{
-                            JOptionPane.showMessageDialog(null, "He has already appeared as a guarantor for three loans", "Information", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "He has already appeared as a guarantor for three loans", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     } catch (Exception e) {
                     }
