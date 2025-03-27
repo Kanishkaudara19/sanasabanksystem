@@ -292,7 +292,7 @@ public class account extends javax.swing.JInternalFrame {
     private void findbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findbtnActionPerformed
 
         if(idbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please type ID","Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please type ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             int   id=Integer.parseInt(idbox.getText());
             try {
@@ -310,7 +310,7 @@ public class account extends javax.swing.JInternalFrame {
                         namebox.setText(fname+" "+lname);
                         acctypebox.setText("Member");
                     }else{
-                        JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }else{
                     if(id>=501 && id<=700){
@@ -324,7 +324,7 @@ public class account extends javax.swing.JInternalFrame {
                             namebox.setText(fname+" "+lname);
                             acctypebox.setText("Child");
                         }else{
-                            JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }else{
                         pst = con.prepareStatement("SElECT nonmemid,fname,lname FROM nonmember WHERE nonmemid='"+id+"'");
@@ -337,7 +337,7 @@ public class account extends javax.swing.JInternalFrame {
                             namebox.setText(fname+" "+lname);
                             acctypebox.setText("Non-Member");
                         }else{
-                            JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                 }
@@ -363,7 +363,7 @@ public class account extends javax.swing.JInternalFrame {
         String time = timebox.getText();
 
         if( accno.equals("Acc No")  || deamountbox.getText().isEmpty() || idbox.getText().isEmpty() || name.equals("Name")  ||  acctype.equals("Acc Type")){
-            JOptionPane.showMessageDialog(null, "Some fields are Empty");
+            JOptionPane.showMessageDialog(null, "Some fields are Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
 
             int damount = Integer.parseInt(deamountbox.getText());
@@ -376,7 +376,7 @@ public class account extends javax.swing.JInternalFrame {
                     rs = pst.executeQuery();
 
                     if (rs.next()==true){
-                        JOptionPane.showMessageDialog(null, "An account has already been opened");
+                        JOptionPane.showMessageDialog(null, "An account has already been opened", "Error", JOptionPane.ERROR_MESSAGE);
                     } else{
                         pst = con.prepareStatement("SElECT accno FROM childacc WHERE accno=?");
                         int srch = Integer.parseInt(idbox.getText());
@@ -384,7 +384,7 @@ public class account extends javax.swing.JInternalFrame {
                         rs = pst.executeQuery();
 
                         if (rs.next()==true){
-                            JOptionPane.showMessageDialog(null, "An account has already been opened");
+                            JOptionPane.showMessageDialog(null, "An account has already been opened", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             pst = con.prepareStatement("SElECT accno FROM nonmemberacc WHERE accno=?");
                             int sch = Integer.parseInt(idbox.getText());
@@ -392,7 +392,7 @@ public class account extends javax.swing.JInternalFrame {
                             rs = pst.executeQuery();
 
                             if (rs.next()==true){
-                                JOptionPane.showMessageDialog(null, "An account has already been opened");
+                                JOptionPane.showMessageDialog(null, "An account has already been opened", "Error", JOptionPane.ERROR_MESSAGE);
                             }else{
                                 if(id>=1 && id<=500){
                                     String sql = "INSERT INTO memberacc (accno,memberid,name,balance,date,time) VALUES ('"+accno+"','"+id+"','"+name+"', '"+damount+"','"+date+"','"+time+"')";
@@ -419,7 +419,7 @@ public class account extends javax.swing.JInternalFrame {
                 }
                 clear();
             }else{
-                JOptionPane.showMessageDialog(null,"A deposit of more than Rs.500/= is required");
+                JOptionPane.showMessageDialog(null,"A deposit of more than Rs.500/= is required", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 

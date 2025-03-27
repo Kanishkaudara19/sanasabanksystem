@@ -5,6 +5,7 @@
 package Interface;
 
 import Code.DBconnect;
+import java.awt.event.KeyEvent;
 import java.awt.print.PrinterException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -91,6 +92,11 @@ public class deposit extends javax.swing.JInternalFrame {
         jPanel4.setLayout(null);
 
         accnobox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        accnobox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                accnoboxKeyPressed(evt);
+            }
+        });
         jPanel4.add(accnobox);
         accnobox.setBounds(40, 30, 230, 30);
 
@@ -155,6 +161,11 @@ public class deposit extends javax.swing.JInternalFrame {
         depositbox.setBackground(new java.awt.Color(86, 152, 250));
         depositbox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         depositbox.setForeground(new java.awt.Color(255, 255, 255));
+        depositbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                depositboxKeyPressed(evt);
+            }
+        });
         jPanel5.add(depositbox);
         depositbox.setBounds(80, 30, 122, 43);
 
@@ -274,7 +285,7 @@ public class deposit extends javax.swing.JInternalFrame {
 
     private void findbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findbtnActionPerformed
         if(accnobox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Account Number");
+            JOptionPane.showMessageDialog(null, "Please Enter Account Number", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             int accno = Integer.parseInt(accnobox.getText());
             if(accno>=1 && accno<=500){
@@ -283,7 +294,7 @@ public class deposit extends javax.swing.JInternalFrame {
                     pst.setInt(1, accno);
                     rs = pst.executeQuery();
                     if(rs.next()==false){
-                        JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                     }else{
                         String fname =  rs.getString("fname");
                         String lname =  rs.getString("lname");
@@ -297,7 +308,7 @@ public class deposit extends javax.swing.JInternalFrame {
                         pst.setInt(1, accno);
                         rs = pst.executeQuery();
                         if(rs.next()==false){
-                            JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             String balance =  rs.getString("balance");
                             amountbox.setText(balance);
@@ -312,7 +323,7 @@ public class deposit extends javax.swing.JInternalFrame {
                         pst.setInt(1, accno);
                         rs = pst.executeQuery();
                         if(rs.next()==false){
-                            JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             String fname =  rs.getString("fname");
                             String lname =  rs.getString("lname");
@@ -326,7 +337,7 @@ public class deposit extends javax.swing.JInternalFrame {
                             pst.setInt(1, accno);
                             rs = pst.executeQuery();
                             if(rs.next()==false){
-                                JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                             }else{
                                 String balance =  rs.getString("balance");
                                 amountbox.setText(balance);
@@ -340,7 +351,7 @@ public class deposit extends javax.swing.JInternalFrame {
                         pst.setInt(1, accno);
                         rs = pst.executeQuery();
                         if(rs.next()==false){
-                            JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             String fname =  rs.getString("fname");
                             String lname =  rs.getString("lname");
@@ -357,7 +368,7 @@ public class deposit extends javax.swing.JInternalFrame {
                                 String balance =  rs.getString("balance");
                                 amountbox.setText(balance);
                             }else{
-                                JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                             }
                         }
                     } catch (Exception e) {
@@ -370,12 +381,12 @@ public class deposit extends javax.swing.JInternalFrame {
 
     private void depositbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositbtnActionPerformed
         if(depositbox.getText().isEmpty() || idbox.getText().equals("ID") || namebox.getText().equals("Name") || typebox.getText().equals("Acc Type") || amountbox.getText().equals("Amount")){
-            JOptionPane.showMessageDialog(null, "Some feild is Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Some feild is Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             int deposit = Integer.parseInt(depositbox.getText());
             int amount = Integer.parseInt(amountbox.getText());
             if(deposit<=99){
-                JOptionPane.showMessageDialog(null, "The minimum amount you can deposit is Rs.100/= ","Information",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "The minimum amount you can deposit is Rs.100/= ", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 String time;
                 String date;
@@ -423,7 +434,7 @@ public class deposit extends javax.swing.JInternalFrame {
 
     private void printbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printbtnActionPerformed
         if(txtarea.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Bill area is Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Bill area is Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 txtarea.print();
@@ -434,6 +445,44 @@ public class deposit extends javax.swing.JInternalFrame {
             txtarea.setText("");
         }
     }//GEN-LAST:event_printbtnActionPerformed
+
+    private void accnoboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_accnoboxKeyPressed
+        String   phone =accnobox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<3){
+                accnobox.setEditable(true);
+            }else{
+                accnobox.setEditable(false);
+
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                accnobox.setEditable(true);
+            }else{
+                accnobox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_accnoboxKeyPressed
+
+    private void depositboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_depositboxKeyPressed
+        String   phone =depositbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+                depositbox.setEditable(true);
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                depositbox.setEditable(true);
+            }else{
+                depositbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_depositboxKeyPressed
 
  public void clear(){
         accnobox.setText("");

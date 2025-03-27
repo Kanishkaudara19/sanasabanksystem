@@ -4,6 +4,7 @@
  */
 package Interface;
 import Code.DBconnect;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -82,6 +83,11 @@ public class balance extends javax.swing.JInternalFrame {
         jPanel4.setLayout(null);
 
         accnobox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        accnobox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                accnoboxKeyPressed(evt);
+            }
+        });
         jPanel4.add(accnobox);
         accnobox.setBounds(38, 27, 230, 30);
 
@@ -209,7 +215,7 @@ public class balance extends javax.swing.JInternalFrame {
 
     private void findbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findbtnActionPerformed
         if(accnobox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Account Number");
+            JOptionPane.showMessageDialog(null, "Please Enter Account Number", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 int accno = Integer.parseInt(accnobox.getText());
@@ -218,7 +224,7 @@ public class balance extends javax.swing.JInternalFrame {
                     pst.setInt(1, accno);
                     rs = pst.executeQuery();
                     if(rs.next()==false){
-                        JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                     }else{
                         String fname =  rs.getString("name");
                         String id =  rs.getString("accno");
@@ -235,7 +241,7 @@ public class balance extends javax.swing.JInternalFrame {
                         pst.setInt(1, accno);
                         rs = pst.executeQuery();
                         if(rs.next()==false){
-                            JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             String fname =  rs.getString("name");
                             String id =  rs.getString("accno");
@@ -251,7 +257,7 @@ public class balance extends javax.swing.JInternalFrame {
                         pst.setInt(1, accno);
                         rs = pst.executeQuery();
                         if(rs.next()==false){
-                            JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             String fname =  rs.getString("name");
                             String id =  rs.getString("accno");
@@ -273,6 +279,27 @@ public class balance extends javax.swing.JInternalFrame {
     private void clearbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearbtnActionPerformed
         clear();
     }//GEN-LAST:event_clearbtnActionPerformed
+
+    private void accnoboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_accnoboxKeyPressed
+        String   phone =accnobox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<3){
+                accnobox.setEditable(true);
+            }else{
+                accnobox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                accnobox.setEditable(true);
+            }else{
+                accnobox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_accnoboxKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

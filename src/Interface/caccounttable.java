@@ -24,6 +24,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -61,7 +62,7 @@ public class caccounttable extends javax.swing.JInternalFrame {
             caccounttable.setFont(new Font("Times New Roman", Font.BOLD, 13));
            theader();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
         
         }
@@ -85,7 +86,7 @@ public class caccounttable extends javax.swing.JInternalFrame {
             Logger.getLogger(loantable.class.getName()).log(Level.SEVERE, null, ex);
         } 
              }else{
-                 JOptionPane.showMessageDialog(null, "The Child ID can only use number 501 to 700."); 
+                 JOptionPane.showMessageDialog(null, "The Child ID can only use number 501 to 700.", "Error", JOptionPane.ERROR_MESSAGE); 
              }
 
     }
@@ -140,6 +141,9 @@ public class caccounttable extends javax.swing.JInternalFrame {
 
         searchbox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         searchbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchboxKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchboxKeyReleased(evt);
             }
@@ -245,7 +249,7 @@ public class caccounttable extends javax.swing.JInternalFrame {
 
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Search field is Empty");
+            JOptionPane.showMessageDialog(null, "Search field is Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             search();
         }
@@ -253,7 +257,7 @@ public class caccounttable extends javax.swing.JInternalFrame {
 
     private void reportbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Account Number");
+            JOptionPane.showMessageDialog(null, "Please Enter Account Number", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             print ();
         }
@@ -261,7 +265,7 @@ public class caccounttable extends javax.swing.JInternalFrame {
 
     private void printbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Account Number");
+            JOptionPane.showMessageDialog(null, "Please Enter Account Number", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             int id = Integer.parseInt(searchbox.getText());
             if(id>=501 && id<=700){
@@ -279,11 +283,32 @@ public class caccounttable extends javax.swing.JInternalFrame {
                     Logger.getLogger(loantable.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "The Child ID can only use number 501 to 700.");
+                JOptionPane.showMessageDialog(null, "The Child ID can only use number 501 to 700.", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
     }//GEN-LAST:event_printbtnActionPerformed
+
+    private void searchboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchboxKeyPressed
+      String   phone =searchbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<3){
+                searchbox.setEditable(true);
+            }else{
+                searchbox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                searchbox.setEditable(true);
+            }else{
+                searchbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_searchboxKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,6 +5,7 @@
 package Interface;
 
 import Code.DBconnect;
+import java.awt.event.KeyEvent;
 import java.awt.print.PrinterException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -98,6 +99,11 @@ public class withdraw extends javax.swing.JInternalFrame {
                 findboxActionPerformed(evt);
             }
         });
+        findbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                findboxKeyPressed(evt);
+            }
+        });
         jPanel4.add(findbox);
         findbox.setBounds(40, 30, 230, 30);
 
@@ -162,6 +168,11 @@ public class withdraw extends javax.swing.JInternalFrame {
         withdrawbox.setBackground(new java.awt.Color(255, 93, 76));
         withdrawbox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         withdrawbox.setForeground(new java.awt.Color(255, 255, 255));
+        withdrawbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                withdrawboxKeyPressed(evt);
+            }
+        });
         jPanel5.add(withdrawbox);
         withdrawbox.setBounds(80, 30, 122, 43);
 
@@ -457,6 +468,44 @@ public class withdraw extends javax.swing.JInternalFrame {
         }
         txtarea.setText("");
     }//GEN-LAST:event_printbtnActionPerformed
+
+    private void findboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findboxKeyPressed
+        String   phone =findbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<3){
+                findbox.setEditable(true);
+            }else{
+                findbox.setEditable(false);
+
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                findbox.setEditable(true);
+            }else{
+                findbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_findboxKeyPressed
+
+    private void withdrawboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_withdrawboxKeyPressed
+        String   phone =withdrawbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+                withdrawbox.setEditable(true);
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                withdrawbox.setEditable(true);
+            }else{
+                withdrawbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_withdrawboxKeyPressed
 
     public void clear(){
         findbox.setText("");

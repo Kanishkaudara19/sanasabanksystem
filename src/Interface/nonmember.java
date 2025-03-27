@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -22,7 +23,7 @@ import javax.swing.JTextField;
  * @author acer
  */
 public class nonmember extends javax.swing.JInternalFrame {
-
+    String currentDirectory = System.getProperty("user.dir");
     Connection con=null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -534,7 +535,7 @@ public class nonmember extends javax.swing.JInternalFrame {
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
 
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Non-Member ID","Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please Enter Non-Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 pst = con.prepareStatement("SElECT nonmemid,fname,lname,address,dob,phoneno,employment,soname,soaddress,sonicno,relationship FROM nonmember WHERE nonmemid=?");
@@ -543,7 +544,7 @@ public class nonmember extends javax.swing.JInternalFrame {
                 rs = pst.executeQuery();
 
                 if(rs.next()==false){
-                    JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     String id = rs.getString("nonmemid");
                     String fname =  rs.getString("fname");
@@ -623,12 +624,12 @@ public class nonmember extends javax.swing.JInternalFrame {
             pst= con.prepareStatement("SELECT nonmemid FROM nonmember WHERE nonmemid='"+nonmemid+"'");
             rs=pst.executeQuery();
             if(rs.next()==true){
-                JOptionPane.showMessageDialog(null, "Already Registered");
+                JOptionPane.showMessageDialog(null, "Already Registered", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
 
                 if(phoneno.isEmpty() || fname.isEmpty() || lname.isEmpty() || address.isEmpty() || nonidbox.getText().isEmpty() || soaddress.isEmpty() || nic.isEmpty() || date.isEmpty() || time.isEmpty() || emp.isEmpty() || soname.isEmpty() || relation.isEmpty()){
 
-                    JOptionPane.showMessageDialog(null, "Some fields are Empty");
+                    JOptionPane.showMessageDialog(null, "Some fields are Empty", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     pst = con.prepareStatement("SElECT accno FROM deaccount WHERE accno=?");
                     pst.setInt(1, nonmemid);
@@ -642,14 +643,14 @@ public class nonmember extends javax.swing.JInternalFrame {
                         String sql = "INSERT INTO nonmember (nonmemid,fname,lname,address,dob,phoneno,employment,soname,soaddress,sonicno,relationship,date,time) VALUES ('"+nonmemid+"','"+fname+"', '"+lname+"','"+address+"','"+dob+"','"+phoneno+"','"+emp+"', '"+soname+"','"+soaddress+"','"+nic+"','"+relation+"','"+date+"','"+time+"')";
                         pst = con.prepareStatement(sql);
                         pst.execute();
-                        JOptionPane.showMessageDialog(null,"Added Succesfull","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Added Succesfull", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\checked.png"));
                         autoID();
                         clear();
                     }else{
                         String sql = "INSERT INTO nonmember (nonmemid,fname,lname,address,dob,phoneno,employment,soname,soaddress,sonicno,relationship,date,time) VALUES ('"+nonmemid+"','"+fname+"', '"+lname+"','"+address+"','"+dob+"','"+phoneno+"','"+emp+"', '"+soname+"','"+soaddress+"','"+nic+"','"+relation+"','"+date+"','"+time+"')";
                         pst = con.prepareStatement(sql);
                         pst.execute();
-                        JOptionPane.showMessageDialog(null,"Added Succesfull","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Added Succesfull", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\checked.png"));
                         autoID();
                         clear();
                     }
@@ -705,13 +706,13 @@ public class nonmember extends javax.swing.JInternalFrame {
         relation= relationbox.getText();
 
         if(phoneno.isEmpty() || fname.isEmpty() || lname.isEmpty() || address.isEmpty() || nonidbox.getText().isEmpty() || soaddress.isEmpty() || nic.isEmpty() || date.isEmpty() || time.isEmpty() || emp.isEmpty() || soname.isEmpty() || relation.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Some fields are Empty");
+            JOptionPane.showMessageDialog(null, "Some fields are Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 String sq = "UPDATE nonmember SET fname='"+fname+"',lname='"+lname+"',address='"+address+"',dob='"+dob+"',phoneno='"+phoneno+"',employment='"+emp+"',soname='"+soname+"',soaddress='"+soaddress+"',sonicno='"+nic+"',relationship='"+relation+"'  WHERE nonmemid= '"+nonmemid+"'";
                 pst = con.prepareStatement(sq);
                 pst.execute();
-                JOptionPane.showMessageDialog(null,"Updated Succesfull ");
+                JOptionPane.showMessageDialog(null,"Updated Succesfull ", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\checked.png"));
                 clear();
                 autoID();
             } catch (Exception e) {
@@ -761,7 +762,7 @@ public class nonmember extends javax.swing.JInternalFrame {
                 pst = con.prepareStatement(s);
                 pst.execute();
 
-                JOptionPane.showMessageDialog(null,"Deleted Succesfull ");
+                JOptionPane.showMessageDialog(null,"Deleted Succesfull ", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\red_checked.png"));
             } catch (Exception e) {
             }
         }
@@ -825,7 +826,7 @@ public class nonmember extends javax.swing.JInternalFrame {
         }
     
         }catch (SQLException e){
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
        }
         
 }

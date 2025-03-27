@@ -139,6 +139,11 @@ public class loan extends javax.swing.JInternalFrame {
         jPanel5.setLayout(null);
 
         memidbox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        memidbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                memidboxKeyPressed(evt);
+            }
+        });
         jPanel5.add(memidbox);
         memidbox.setBounds(20, 30, 220, 30);
 
@@ -255,6 +260,11 @@ public class loan extends javax.swing.JInternalFrame {
         jPanel14.setLayout(null);
 
         searchbox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        searchbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchboxKeyPressed(evt);
+            }
+        });
         jPanel14.add(searchbox);
         searchbox.setBounds(20, 20, 140, 30);
 
@@ -372,6 +382,11 @@ public class loan extends javax.swing.JInternalFrame {
         jPanel11.setLayout(null);
 
         g1searchbox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        g1searchbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                g1searchboxKeyPressed(evt);
+            }
+        });
         jPanel11.add(g1searchbox);
         g1searchbox.setBounds(20, 20, 160, 30);
 
@@ -442,6 +457,11 @@ public class loan extends javax.swing.JInternalFrame {
         jPanel12.setLayout(null);
 
         g2searchbox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        g2searchbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                g2searchboxKeyPressed(evt);
+            }
+        });
         jPanel12.add(g2searchbox);
         g2searchbox.setBounds(20, 20, 160, 30);
 
@@ -528,10 +548,20 @@ public class loan extends javax.swing.JInternalFrame {
         jLabel13.setBounds(320, 50, 150, 14);
 
         mendabox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        mendabox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                mendaboxKeyPressed(evt);
+            }
+        });
         jPanel13.add(mendabox);
         mendabox.setBounds(170, 40, 130, 30);
 
         secbox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        secbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                secboxKeyPressed(evt);
+            }
+        });
         jPanel13.add(secbox);
         secbox.setBounds(480, 40, 130, 30);
 
@@ -666,7 +696,7 @@ public class loan extends javax.swing.JInternalFrame {
 
     private void findboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findboxActionPerformed
         if(memidbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 pst = con.prepareStatement("SElECT memberid,fname,lname,address,nicno,phoneno FROM member WHERE memberid=?");
@@ -674,7 +704,7 @@ public class loan extends javax.swing.JInternalFrame {
                 pst.setInt(1, search);
                 rs = pst.executeQuery();
                 if(rs.next()==false){
-                    JOptionPane.showMessageDialog(null, "Search item not found", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     int id =rs.getInt("memberid");
                     String fname = rs.getString("fname");
@@ -771,7 +801,7 @@ public class loan extends javax.swing.JInternalFrame {
         String nic = nicbox.getText();
 
         if(loanid.equals("ID") || name.equals("Name") || address.equals("Address") || nic.equals("NIC No") || phonenobox.getText().equals("Phone no") || agebox.getText().isEmpty() || amountbox.getText().isEmpty() || instbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Some fields are Empty");
+            JOptionPane.showMessageDialog(null, "Some fields are Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
 
             try {
@@ -794,14 +824,14 @@ public class loan extends javax.swing.JInternalFrame {
                         if(ints<=from){
                             nextpanel.setSelectedIndex(1);
                         }else{
-                            JOptionPane.showMessageDialog(null, "The loan installments exceed the amount you receive");
+                            JOptionPane.showMessageDialog(null, "The loan installments exceed the amount you receive", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }else{
                         int ints = Integer.parseInt(instbox.getText());
                         if(ints<=to){
                             nextpanel.setSelectedIndex(1);
                         }else{
-                            JOptionPane.showMessageDialog(null, "The maximum number of installment that the bank can pay to repay a loan has been exceeded");
+                            JOptionPane.showMessageDialog(null, "The maximum number of installment that the bank can pay to repay a loan has been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                 }else{
@@ -837,7 +867,7 @@ public class loan extends javax.swing.JInternalFrame {
 
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+                JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_nextbtnActionPerformed
@@ -871,7 +901,7 @@ public class loan extends javax.swing.JInternalFrame {
             if(rs.next()==false){
                 if(checkbox.isSelected()){
                     if(g1idbox.getText().equals("ID") || g2idbox.getText().equals("ID") || g1name.equals("name") || g1address.equals("address") || g1nic.equals("nic no") || g2name.equals("name") || g2address.equals("address") || g2nic.equals("nic no") || mendabox.getText().isEmpty() || secbox.getText().isEmpty()){
-                        JOptionPane.showMessageDialog(null, "Some feilds are Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Some feilds are Empty", "Error", JOptionPane.ERROR_MESSAGE);
                     }else{
                         int amount = Integer.parseInt(amountbox.getText());
 
@@ -908,10 +938,10 @@ public class loan extends javax.swing.JInternalFrame {
 
                             if(curenntamount>=llimit+1){
 
-                                JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded");
+                                JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                             }else{
                                 if(intstall>to){
-                                    JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded");
+                                    JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                                 }else{
                                     String sql = "INSERT INTO loan (memberid,loanid,name,address,phoneno,nic,age,amount,installments,mendaamount,secamount,date,time) VALUES ('"+memid+"','"+loanid+"','"+name+"', '"+address+"','"+phoneno+"','"+nic+"','"+age+"','"+curenntamount+"','"+intstall+"','"+mandaamount+"','"+secamount+"','"+date+"','"+time+"')";
                                     pst = con.prepareStatement(sql);
@@ -927,13 +957,13 @@ public class loan extends javax.swing.JInternalFrame {
                                 }
                             }
                         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, e);
+                            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                 }else{
                     //  JOptionPane.showMessageDialog(null, "Skkkkkkkkkkkkkk","Information",JOptionPane.INFORMATION_MESSAGE);
                     if(g1idbox.getText().equals("ID") || g2idbox.getText().equals("ID") || g1name.equals("name") || g1address.equals("address") || g1nic.equals("nic no") || g2name.equals("name") || g2address.equals("address") || g2nic.equals("nic no")){
-                        JOptionPane.showMessageDialog(null, "Some feilds are Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Some feilds are Empty", "Error", JOptionPane.ERROR_MESSAGE);
                     }else{
                         try {
                             pst = con.prepareStatement("SElECT mandatory,securities,interest,loan_limit,toinstallment FROM admin ");
@@ -965,10 +995,10 @@ public class loan extends javax.swing.JInternalFrame {
                             int g2id = Integer.parseInt(g2idbox.getText());
                             if(curenntamount>=llimit+1){
 
-                                JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded");
+                                JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                             }else{
                                 if(intstall>to){
-                                    JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded");
+                                    JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                                 }else{
                                     String sql = "INSERT INTO loan (memberid,loanid,name,address,phoneno,nic,age,amount,installments,mendaamount,secamount,date,time) VALUES ('"+memid+"','"+loanid+"','"+name+"', '"+address+"','"+phoneno+"','"+nic+"','"+age+"','"+curenntamount+"','"+intstall+"','"+mandaamount+"','"+secamount+"','"+date+"','"+time+"')";
                                     pst = con.prepareStatement(sql);
@@ -983,14 +1013,14 @@ public class loan extends javax.swing.JInternalFrame {
                                 }
                             }
                         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, e);
+                            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                 }
             }else{
                 if(checkbox.isSelected()){
                     if(g1idbox.getText().equals("ID") || g2idbox.getText().equals("ID") || g1name.equals("name") || g1address.equals("address") || g1nic.equals("nic no") || g2name.equals("name") || g2address.equals("address") || g2nic.equals("nic no") || mendabox.getText().isEmpty() || secbox.getText().isEmpty()){
-                        JOptionPane.showMessageDialog(null, "Some feilds are Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Some feilds are Empty", "Error", JOptionPane.ERROR_MESSAGE);
                     }else{
                         int amount = Integer.parseInt(amountbox.getText());
 
@@ -1032,10 +1062,10 @@ public class loan extends javax.swing.JInternalFrame {
 
                             if(curenntamount>=llimit+1){
 
-                                JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded");
+                                JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                             }else{
                                 if(intstall>to){
-                                    JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded");
+                                    JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                                 }else{
                                     String sql = "UPDATE loan SET age='"+age+"',amount='"+curenntamount+"',installments='"+intstall+"',mendaamount='"+currutmanda+"',secamount='"+currutsec+"',date='"+date+"',time='"+time+"' WHERE memberid='"+memid+"'";
                                     pst = con.prepareStatement(sql);
@@ -1051,13 +1081,13 @@ public class loan extends javax.swing.JInternalFrame {
                                 }
                             }
                         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, e);
+                            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                 }else{
                     //  JOptionPane.showMessageDialog(null, "Skkkkkkkkkkkkkk","Information",JOptionPane.INFORMATION_MESSAGE);
                     if(g1idbox.getText().equals("ID") || g2idbox.getText().equals("ID") || g1name.equals("name") || g1address.equals("address") || g1nic.equals("nic no") || g2name.equals("name") || g2address.equals("address") || g2nic.equals("nic no")){
-                        JOptionPane.showMessageDialog(null, "Some feilds are Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Some feilds are Empty", "Error", JOptionPane.ERROR_MESSAGE);
                     }else{
                         try {
                             pst = con.prepareStatement("SElECT mandatory,securities,interest,loan_limit,toinstallment FROM admin ");
@@ -1084,10 +1114,10 @@ public class loan extends javax.swing.JInternalFrame {
                             int g2id = Integer.parseInt(g2idbox.getText());
                             if(curenntamount>=llimit+1){
 
-                                JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded");
+                                JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                             }else{
                                 if(intstall>to){
-                                    JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded");
+                                    JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                                 }else{
                                     String sql = "UPDATE loan SET age='"+age+"',amount='"+curenntamount+"',installments='"+intstall+"',date='"+date+"',time='"+time+"' WHERE memberid='"+memid+"'";
                                     pst = con.prepareStatement(sql);
@@ -1102,7 +1132,7 @@ public class loan extends javax.swing.JInternalFrame {
                                 }
                             }
                         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, e);
+                            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
                         }
 
                     }
@@ -1127,7 +1157,7 @@ public class loan extends javax.swing.JInternalFrame {
 
         if(checkbox.isSelected()){
             if(g1idbox.getText().equals("ID") || g2idbox.getText().equals("ID") || g1name.equals("name") || g1address.equals("address") || g1nic.equals("nic no") || g2name.equals("name") || g2address.equals("address") || g2nic.equals("nic no") || mendabox.getText().isEmpty() || secbox.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Some feilds are Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Some feilds are Empty", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 int amount = Integer.parseInt(amountbox.getText());
 
@@ -1169,10 +1199,10 @@ public class loan extends javax.swing.JInternalFrame {
 
                     if(curenntamount>=llimit+1){
 
-                        JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded");
+                        JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                     }else{
                         if(intstall>to){
-                            JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded");
+                            JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             String sql = "UPDATE loan SET age='"+age+"',amount='"+curenntamount+"',installments='"+intstall+"',mendaamount='"+currutmanda+"',secamount='"+currutsec+"',date='"+date+"',time='"+time+"' WHERE memberid='"+memid+"'";
                             pst = con.prepareStatement(sql);
@@ -1194,7 +1224,7 @@ public class loan extends javax.swing.JInternalFrame {
         }else{
             //  JOptionPane.showMessageDialog(null, "Skkkkkkkkkkkkkk","Information",JOptionPane.INFORMATION_MESSAGE);
             if(g1idbox.getText().equals("ID") || g2idbox.getText().equals("ID") || g1name.equals("name") || g1address.equals("address") || g1nic.equals("nic no") || g2name.equals("name") || g2address.equals("address") || g2nic.equals("nic no")){
-                JOptionPane.showMessageDialog(null, "Some feilds are Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Some feilds are Empty", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 try {
                     pst = con.prepareStatement("SElECT mandatory,securities,interest,loan_limit,toinstallment FROM admin ");
@@ -1221,10 +1251,10 @@ public class loan extends javax.swing.JInternalFrame {
                     int g2id = Integer.parseInt(g2idbox.getText());
                     if(curenntamount>=llimit+1){
 
-                        JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded");
+                        JOptionPane.showMessageDialog(null, "Your maximum credit limit has been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                     }else{
                         if(intstall>to){
-                            JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded");
+                            JOptionPane.showMessageDialog(null, "Your maximum loan installments have been exceeded", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             String sql = "UPDATE loan SET age='"+age+"',amount='"+curenntamount+"',installments='"+intstall+"',date='"+date+"',time='"+time+"' WHERE memberid='"+memid+"'";
                             pst = con.prepareStatement(sql);
@@ -1239,7 +1269,7 @@ public class loan extends javax.swing.JInternalFrame {
                         }
                     }
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e);
+                    JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
@@ -1256,13 +1286,13 @@ public class loan extends javax.swing.JInternalFrame {
 
     private void g2findbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_g2findbtnActionPerformed
         if(g2searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             if(g2searchbox.getText().equals(g1searchbox.getText()) || g2searchbox.getText().equals(g1idbox.getText())){
-                JOptionPane.showMessageDialog(null, "He has already appeared as a guarantor", "Information", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "He has already appeared as a guarantor", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 if(memidbox.getText().equals(g2searchbox.getText())){
-                    JOptionPane.showMessageDialog(null, "He is the borrower", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "He is the borrower", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     try {
                         int search = Integer.parseInt(g2searchbox.getText());
@@ -1275,7 +1305,7 @@ public class loan extends javax.swing.JInternalFrame {
                             pst = con.prepareStatement("SElECT memberid,fname,lname,address,nicno,phoneno FROM member WHERE memberid='"+search+"'");
                             rs = pst.executeQuery();
                             if(rs.next()==false){
-                                JOptionPane.showMessageDialog(null, "Search item not found", "Information", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                             }else{
                                 int id =rs.getInt("memberid");
                                 String fname = rs.getString("fname");
@@ -1291,7 +1321,7 @@ public class loan extends javax.swing.JInternalFrame {
                                 g2searchbox.setText("");
                             }
                         }else{
-                            JOptionPane.showMessageDialog(null, "He has already appeared as a guarantor for three loans", "Information", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "He has already appeared as a guarantor for three loans", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, e);
@@ -1303,13 +1333,13 @@ public class loan extends javax.swing.JInternalFrame {
 
     private void g1findbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_g1findbtnActionPerformed
         if(g1searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             if(g1searchbox.getText().equals(g2searchbox.getText()) || g1searchbox.getText().equals(g2idbox.getText())){
                 JOptionPane.showMessageDialog(null, "He has already appeared as a guarantor", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 if(memidbox.getText().equals(g1searchbox.getText())){
-                    JOptionPane.showMessageDialog(null, "He is the borrower", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "He is the borrower", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     try {
                         int search = Integer.parseInt(g1searchbox.getText());
@@ -1345,6 +1375,132 @@ public class loan extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_g1findbtnActionPerformed
+
+    private void memidboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_memidboxKeyPressed
+        String   phone =memidbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<3){
+                memidbox.setEditable(true);
+            }else{
+                memidbox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                memidbox.setEditable(true);
+            }else{
+                memidbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_memidboxKeyPressed
+
+    private void searchboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchboxKeyPressed
+       String   phone =searchbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<3){
+                searchbox.setEditable(true);
+            }else{
+                searchbox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                searchbox.setEditable(true);
+            }else{
+                searchbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_searchboxKeyPressed
+
+    private void g1searchboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_g1searchboxKeyPressed
+        String   phone =g1searchbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<3){
+                g1searchbox.setEditable(true);
+            }else{
+                g1searchbox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                g1searchbox.setEditable(true);
+            }else{
+                g1searchbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_g1searchboxKeyPressed
+
+    private void g2searchboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_g2searchboxKeyPressed
+        String   phone =g2searchbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<3){
+                g2searchbox.setEditable(true);
+            }else{
+                g2searchbox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                g2searchbox.setEditable(true);
+            }else{
+                g2searchbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_g2searchboxKeyPressed
+
+    private void mendaboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mendaboxKeyPressed
+         String   phone =amountbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<5){
+                mendabox.setEditable(true);
+            }else{
+                mendabox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                mendabox.setEditable(true);
+            }else{
+                mendabox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_mendaboxKeyPressed
+
+    private void secboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_secboxKeyPressed
+        String   phone =amountbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<5){
+                secbox.setEditable(true);
+            }else{
+                secbox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                secbox.setEditable(true);
+            }else{
+                secbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_secboxKeyPressed
     public void checkbox(){
          if(checkbox.isSelected()){
            mendabox.setEditable(true);
@@ -1386,7 +1542,7 @@ public class loan extends javax.swing.JInternalFrame {
     
      public void search(){
          if(searchbox.getText().isEmpty()){
-             JOptionPane.showMessageDialog(null, "Please Enter Member ID or Loan ID");
+             JOptionPane.showMessageDialog(null, "Please Enter Member ID or Loan ID", "Error", JOptionPane.ERROR_MESSAGE);
          }else{
              
              try {
@@ -1397,7 +1553,7 @@ public class loan extends javax.swing.JInternalFrame {
             pst.setString(2, search2);
            rs = pst.executeQuery();
            if(rs.next()==false){
-               JOptionPane.showMessageDialog(null, "Search item not found");
+               JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                clear();
                clear2();
            }else{

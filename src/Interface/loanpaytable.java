@@ -6,6 +6,7 @@ package Interface;
 import Code.DBconnect;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -61,7 +62,7 @@ public class loanpaytable extends javax.swing.JInternalFrame {
             loanpaytable.setFont(new Font("Times New Roman", Font.BOLD, 13));
            theader();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
         
         }
@@ -96,7 +97,7 @@ public class loanpaytable extends javax.swing.JInternalFrame {
             Logger.getLogger(loantable.class.getName()).log(Level.SEVERE, null, ex);
         }
              }else{
-                 JOptionPane.showMessageDialog(null, "The Member ID can only use number 1 to 500."); 
+                 JOptionPane.showMessageDialog(null, "The Member ID can only use number 1 to 500.", "Error", JOptionPane.ERROR_MESSAGE); 
              }
        
     }
@@ -139,6 +140,9 @@ public class loanpaytable extends javax.swing.JInternalFrame {
 
         searchbox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         searchbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchboxKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchboxKeyReleased(evt);
             }
@@ -213,9 +217,7 @@ public class loanpaytable extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -247,7 +249,7 @@ public class loanpaytable extends javax.swing.JInternalFrame {
 
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Search field is Empty");
+            JOptionPane.showMessageDialog(null, "Search field is Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             search();
         }
@@ -255,7 +257,7 @@ public class loanpaytable extends javax.swing.JInternalFrame {
 
     private void reportbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Member ID");
+            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             print ();
         }
@@ -263,7 +265,7 @@ public class loanpaytable extends javax.swing.JInternalFrame {
 
     private void printbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Member ID");
+            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             int id = Integer.parseInt(searchbox.getText());
             if(id>=1 && id<=500){
@@ -281,11 +283,32 @@ public class loanpaytable extends javax.swing.JInternalFrame {
                     Logger.getLogger(loantable.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "The Member ID can only use number 1 to 500.");
+                JOptionPane.showMessageDialog(null, "The Member ID can only use number 1 to 500.", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
     }//GEN-LAST:event_printbtnActionPerformed
+
+    private void searchboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchboxKeyPressed
+              String   phone =searchbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<3){
+                searchbox.setEditable(true);
+            }else{
+                searchbox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                searchbox.setEditable(true);
+            }else{
+                searchbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_searchboxKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -330,7 +330,7 @@ public class admin extends javax.swing.JInternalFrame {
 
     private void registerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbtnActionPerformed
         if(usernamebox.getText().isEmpty() || pwdbox.getText().isEmpty() || repwdbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Some feild is Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Some feild is Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
 
             try {
@@ -347,7 +347,7 @@ public class admin extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Registred Succesfull","Information",JOptionPane.INFORMATION_MESSAGE);
                     clear();
                 }else{
-                    JOptionPane.showMessageDialog(null, "duplicate username","Information",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Duplicate username", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception e) {
             }
@@ -382,7 +382,7 @@ public class admin extends javax.swing.JInternalFrame {
 
     private void findbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findbtnActionPerformed
         if(namebox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter current username");
+            JOptionPane.showMessageDialog(null, "Please Enter current username", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 String txt = namebox.getText();
@@ -390,7 +390,7 @@ public class admin extends javax.swing.JInternalFrame {
                 pst.setString(1, txt);
                 rs = pst.executeQuery();
                 if(rs.next()==false){
-                    JOptionPane.showMessageDialog(null, "Search item not found");
+                    JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     String pwd = rs.getString("password");
                     cpwdbox.setText(pwd);
@@ -402,7 +402,7 @@ public class admin extends javax.swing.JInternalFrame {
 
     private void okbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okbtnActionPerformed
         if(namebox.getText().isEmpty() || cpwdbox.getText().isEmpty() || newpwdbox.getText().isEmpty() ||cnewpwdbox.getText().isEmpty() ){
-            JOptionPane.showMessageDialog(null, "Some feild is Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Some feild is Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 String name =namebox.getText();

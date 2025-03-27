@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -22,6 +23,7 @@ import javax.swing.JTextField;
  * @author acer
  */
 public class child extends javax.swing.JInternalFrame {
+    String currentDirectory = System.getProperty("user.dir");
     Connection con=null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -468,7 +470,7 @@ public class child extends javax.swing.JInternalFrame {
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
 
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Non-Member ID","Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please Enter Non-Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 pst = con.prepareStatement("SElECT childid,fname,lname,dob,address,trusteename,trusteeaddress,trusteenic,trusteephoneno FROM child WHERE childid=?");
@@ -477,7 +479,7 @@ public class child extends javax.swing.JInternalFrame {
                 rs = pst.executeQuery();
 
                 if(rs.next()==false){
-                    JOptionPane.showMessageDialog(null, "Search item not found","Information",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     String id = rs.getString("childid");
                     String fname =  rs.getString("fname");
@@ -511,7 +513,7 @@ public class child extends javax.swing.JInternalFrame {
             String s =((JTextField)dobbox.getDateEditor().getUiComponent()).getText();
 
             if (s.equals("dd/MM/yyyy")){
-                JOptionPane.showMessageDialog(null,"Please Enter Birthday", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Please Enter Birthday", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception e) {
 
@@ -548,11 +550,11 @@ public class child extends javax.swing.JInternalFrame {
             pst= con.prepareStatement("SELECT childid FROM child WHERE childid='"+childid+"'");
             rs=pst.executeQuery();
             if(rs.next()==true){
-                JOptionPane.showMessageDialog(null, "Alredy Registered");
+                JOptionPane.showMessageDialog(null, "Alredy Registered", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
 
                 if(phoneno.isEmpty() || fname.isEmpty() || lname.isEmpty() || address.isEmpty() || childidbox.getText().isEmpty() || taddress.isEmpty() || nic.isEmpty() || date.isEmpty() || time.isEmpty() || tname.isEmpty() ){
-                    JOptionPane.showMessageDialog(null, "Some fields are Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Some fields are Empty", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     pst = con.prepareStatement("SElECT accno FROM deaccount WHERE accno=?");
                     pst.setInt(1, childid);
@@ -566,14 +568,14 @@ public class child extends javax.swing.JInternalFrame {
                         String sql = "INSERT INTO child (childid,fname,lname,dob,address,trusteename,trusteeaddress,trusteenic,trusteephoneno,date,time) VALUES ('"+childid+"','"+fname+"', '"+lname+"','"+dob+"','"+address+"','"+tname+"','"+taddress+"', '"+nic+"','"+phoneno+"','"+date+"','"+time+"')";
                         pst = con.prepareStatement(sql);
                         pst.execute();
-                        JOptionPane.showMessageDialog(null,"Added Succesfull","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Added Succesfull", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\checked.png"));
                         autoID();
                         clear();
                     }else{
                         String sql = "INSERT INTO child (childid,fname,lname,dob,address,trusteename,trusteeaddress,trusteenic,trusteephoneno,date,time) VALUES ('"+childid+"','"+fname+"', '"+lname+"','"+dob+"','"+address+"','"+tname+"','"+taddress+"', '"+nic+"','"+phoneno+"','"+date+"','"+time+"')";
                         pst = con.prepareStatement(sql);
                         pst.execute();
-                        JOptionPane.showMessageDialog(null,"Added Succesfull","Information",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Added Succesfull", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\checked.png"));
                         autoID();
                         clear();
                     }
@@ -591,7 +593,7 @@ public class child extends javax.swing.JInternalFrame {
             String s =((JTextField)dobbox.getDateEditor().getUiComponent()).getText();
 
             if (s.equals("dd/MM/yyyy")){
-                JOptionPane.showMessageDialog(null,"Please Enter Birthday", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Please Enter Birthday", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception e) {
 
@@ -625,17 +627,17 @@ public class child extends javax.swing.JInternalFrame {
         tname= tnamebox.getText();
 
         if(phoneno.isEmpty() || fname.isEmpty() || lname.isEmpty() || address.isEmpty() || childidbox.getText().isEmpty() || taddress.isEmpty() || nic.isEmpty() || date.isEmpty() || time.isEmpty() || tname.isEmpty() ){
-            JOptionPane.showMessageDialog(null, "Some fields are Empty","Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Some fields are Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 String sq = "UPDATE child SET fname='"+fname+"',lname='"+lname+"',address='"+address+"',dob='"+dob+"',trusteename='"+tname+"',trusteeaddress='"+taddress+"',trusteenic='"+nic+"',trusteephoneno='"+phoneno+"'  WHERE childid= '"+childid+"'";
                 pst = con.prepareStatement(sq);
                 pst.execute();
-                JOptionPane.showMessageDialog(null,"Updated Succesfull ");
+                JOptionPane.showMessageDialog(null,"Updated Succesfull ", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\checked.png"));
                 clear();
                 autoID();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,e);
+                JOptionPane.showMessageDialog(null,e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_updatebtnActionPerformed
@@ -681,7 +683,7 @@ public class child extends javax.swing.JInternalFrame {
                 pst = con.prepareStatement(s);
                 pst.execute();
 
-                JOptionPane.showMessageDialog(null,"Deleted Succesfull ");
+                JOptionPane.showMessageDialog(null,"Deleted Succesfull ", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\red_checked.png"));
                 clear();
                 autoID();
             } catch (Exception e) {

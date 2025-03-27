@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -22,6 +23,7 @@ import javax.swing.JTextField;
  * @author acer
  */
 public class member extends javax.swing.JInternalFrame {
+    String currentDirectory = System.getProperty("user.dir");
 
     Connection con=null;
     PreparedStatement pst = null;
@@ -507,7 +509,7 @@ public class member extends javax.swing.JInternalFrame {
             String s =((JTextField)dobbox.getDateEditor().getUiComponent()).getText();
 
             if (s.equals("dd/MM/yyyy")){
-                JOptionPane.showMessageDialog(null,"Please Enter Birthday", "Warning", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Please Enter Birthday", "Error", JOptionPane.ERROR_MESSAGE);
 
             }
         } catch (Exception e) {
@@ -557,7 +559,7 @@ public class member extends javax.swing.JInternalFrame {
                     pst= con.prepareStatement("SELECT memberid FROM member WHERE memberid='"+memid+"'");
                     rs=pst.executeQuery();
                     if(rs.next()==true){
-                        JOptionPane.showMessageDialog(null, "Alredy Registered");
+                        JOptionPane.showMessageDialog(null, "Alredy Registered", "Error", JOptionPane.ERROR_MESSAGE);
 
                     }else{
                         pst = con.prepareStatement("SElECT accno FROM deaccount WHERE accno=?");
@@ -573,7 +575,7 @@ public class member extends javax.swing.JInternalFrame {
                             String sql = "INSERT INTO member (memberid,fname,lname,address,employment,gender,dob,nicno,phoneno,shares,date,time) VALUES ('"+memid+"','"+fname+"', '"+lname+"','"+address+"','"+emp+"','"+gender+"','"+dob+"', '"+nic+"','"+ phoneno+"','"+share+"','"+date+"','"+time+"')";
                             pst = con.prepareStatement(sql);
                             pst.execute();
-                            JOptionPane.showMessageDialog(null,"Added Succesfull");
+                            JOptionPane.showMessageDialog(null,"Added Succesfull", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\checked.png"));
                             autoID();
                             clear();
                         }else
@@ -581,13 +583,13 @@ public class member extends javax.swing.JInternalFrame {
                             String sql = "INSERT INTO member (memberid,fname,lname,address,employment,gender,dob,nicno,phoneno,shares,date,time) VALUES ('"+memid+"','"+fname+"', '"+lname+"','"+address+"','"+emp+"','"+gender+"','"+dob+"', '"+nic+"','"+ phoneno+"','"+share+"','"+date+"','"+time+"')";
                             pst = con.prepareStatement(sql);
                             pst.execute();
-                            JOptionPane.showMessageDialog(null,"Added Succesfull");
+                            JOptionPane.showMessageDialog(null,"Added Succesfull", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\checked.png"));
                             autoID();
                             clear();
                         }
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null,"A deposit of Rs.1000/= or more is required for the share price.");
+                    JOptionPane.showMessageDialog(null,"A deposit of Rs.1000/= or more is required for the share price.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } catch (Exception e) {
@@ -635,18 +637,18 @@ public class member extends javax.swing.JInternalFrame {
 
         if(phonenobox.getText().isEmpty() || fname.isEmpty() || lname.isEmpty() || address.isEmpty() || memidbox.getText().isEmpty() || sharesbox.getText().isEmpty() || nic.isEmpty() || emp.isEmpty() ){
 
-            JOptionPane.showMessageDialog(null, "Please fill All fields", "Warning", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please fill All fields", "Error", JOptionPane.ERROR_MESSAGE);
         } else{
 
             try {
                 String sq = "UPDATE member SET fname='"+fname+"',lname='"+lname+"',address='"+address+"',employment='"+emp+"',gender='"+gender+"',dob='"+dob+"',nicno='"+nic+"',phoneno='"+phoneno+"',shares='"+share+"'  WHERE memberid= '"+memid+"'";
                 pst = con.prepareStatement(sq);
                 pst.execute();
-                JOptionPane.showMessageDialog(null,"Updated Succesfull");
+                JOptionPane.showMessageDialog(null,"Updated Succesfull", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\checked.png"));
                 clear();
                 autoID();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,e);
+                JOptionPane.showMessageDialog(null,e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -695,9 +697,9 @@ public class member extends javax.swing.JInternalFrame {
                 pst = con.prepareStatement(s);
                 pst.execute();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,e);
+                JOptionPane.showMessageDialog(null,e, "Error", JOptionPane.ERROR_MESSAGE);
             }
-            JOptionPane.showMessageDialog(null,"Deleted Succesfull ");
+            JOptionPane.showMessageDialog(null,"Deleted Succesfull ", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(currentDirectory + "\\src\\images\\red_checked.png"));
         }
         clear();
         autoID();
@@ -744,7 +746,7 @@ public class member extends javax.swing.JInternalFrame {
 
     private void SearchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchbtnActionPerformed
         if(searchbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Type Member ID", "Warning", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please Type Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
 
             try {
@@ -818,7 +820,7 @@ public void clear(){
         }
     
         }catch (SQLException e){
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
        }
         
 }

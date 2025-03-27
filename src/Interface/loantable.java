@@ -7,6 +7,7 @@ import Code.DBconnect;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -63,7 +64,7 @@ public class loantable extends javax.swing.JInternalFrame {
             Logger.getLogger(loantable.class.getName()).log(Level.SEVERE, null, ex);
         }
              }else{
-                 JOptionPane.showMessageDialog(null, "The Member ID can only use number 1 to 500.");
+                 JOptionPane.showMessageDialog(null, "The Member ID can only use number 1 to 500.", "Error", JOptionPane.ERROR_MESSAGE);
              }
        
     }
@@ -111,7 +112,7 @@ public class loantable extends javax.swing.JInternalFrame {
             col10.setPreferredWidth(55);
            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
         
          try {
@@ -131,7 +132,7 @@ public class loantable extends javax.swing.JInternalFrame {
             TableColumn col4=guarantortable.getColumnModel().getColumn(3);
             col4.setPreferredWidth(20);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
         theader();
         }
@@ -178,6 +179,9 @@ public class loantable extends javax.swing.JInternalFrame {
 
         memidbox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         memidbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                memidboxKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 memidboxKeyReleased(evt);
             }
@@ -278,9 +282,7 @@ public class loantable extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -313,7 +315,7 @@ public class loantable extends javax.swing.JInternalFrame {
 
     private void reportbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportbtnActionPerformed
         if(memidbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Member ID");
+            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             print ();
         }
@@ -322,7 +324,7 @@ public class loantable extends javax.swing.JInternalFrame {
 
     private void printbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printbtnActionPerformed
         if(memidbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Member ID");
+            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             int id = Integer.parseInt(memidbox.getText());
             if(id>=1 && id<=500){
@@ -348,7 +350,7 @@ public class loantable extends javax.swing.JInternalFrame {
 
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
         if(memidbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Member ID");
+            JOptionPane.showMessageDialog(null, "Please Enter Member ID", "Error", JOptionPane.ERROR_MESSAGE);
             tableload();
         }else{
 
@@ -367,6 +369,27 @@ public class loantable extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_searchbtnActionPerformed
+
+    private void memidboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_memidboxKeyPressed
+        String   phone =memidbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<3){
+                memidbox.setEditable(true);
+            }else{
+                memidbox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                memidbox.setEditable(true);
+            }else{
+                memidbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_memidboxKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

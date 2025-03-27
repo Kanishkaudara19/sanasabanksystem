@@ -432,7 +432,7 @@ public class adminchanges extends javax.swing.JInternalFrame {
 
     private void okbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okbtnActionPerformed
         if(llimitbox.getText().isEmpty() || mandatorybox.getText().isEmpty() || securitiesbox.getText().isEmpty() || sharebox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Some feilds are Empty");
+            JOptionPane.showMessageDialog(null, "Some feilds are Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             int share = Integer.parseInt(sharebox.getText());
             int limit = Integer.parseInt(llimitbox.getText());

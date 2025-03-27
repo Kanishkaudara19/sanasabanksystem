@@ -5,6 +5,7 @@
 package Interface;
 
 import Code.DBconnect;
+import java.awt.event.KeyEvent;
 import static java.lang.System.in;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -88,6 +89,11 @@ public class loanpay extends javax.swing.JInternalFrame {
         jPanel4.setLayout(null);
 
         loanidbox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        loanidbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loanidboxKeyPressed(evt);
+            }
+        });
         jPanel4.add(loanidbox);
         loanidbox.setBounds(40, 30, 230, 30);
 
@@ -161,6 +167,11 @@ public class loanpay extends javax.swing.JInternalFrame {
 
         paybox.setBackground(new java.awt.Color(181, 244, 181));
         paybox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        paybox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                payboxKeyPressed(evt);
+            }
+        });
         jPanel5.add(paybox);
         paybox.setBounds(80, 40, 110, 40);
 
@@ -266,7 +277,7 @@ public class loanpay extends javax.swing.JInternalFrame {
 
     private void findbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findbtnActionPerformed
         if(loanidbox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Member ID or Loan ID" ,"Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please Enter Member ID or Loan ID" , "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 pst = con.prepareStatement("SElECT memberid,loanid,name,nic,amount,installments FROM loan WHERE memberid=? OR loanid=? ");
@@ -275,7 +286,7 @@ public class loanpay extends javax.swing.JInternalFrame {
                 pst.setString(2, search);
                 rs = pst.executeQuery();
                 if(rs.next()==false){
-                    JOptionPane.showMessageDialog(null, "No loan has been obtained for this number" ,"Information",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "No loan has been obtained for this number" , "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     String loanid = rs.getString("loanid");
                     String name = rs.getString("name");
@@ -300,7 +311,7 @@ public class loanpay extends javax.swing.JInternalFrame {
 
     private void paybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paybtnActionPerformed
         if(loanidbox.getText().isEmpty() || idbox.getText().equals("ID") || paybox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Some fields are Empty" ,"Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Some fields are Empty" , "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 String memid = loanidbox.getText();
@@ -356,7 +367,7 @@ public class loanpay extends javax.swing.JInternalFrame {
 
     private void paybtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paybtnMouseClicked
        if(loanidbox.getText().isEmpty() || idbox.getText().equals("ID") || paybox.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Some fields are Empty" ,"Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Some fields are Empty" , "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             try {
                 String memid = loanidbox.getText();
@@ -402,10 +413,52 @@ public class loanpay extends javax.swing.JInternalFrame {
                     clear();
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e ,"Information",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, e , "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_paybtnMouseClicked
+
+    private void loanidboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loanidboxKeyPressed
+        String   phone =loanidbox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<3){
+                loanidbox.setEditable(true);
+            }else{
+                loanidbox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                loanidbox.setEditable(true);
+            }else{
+                loanidbox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_loanidboxKeyPressed
+
+    private void payboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_payboxKeyPressed
+        String   phone =paybox.getText();
+        int length = phone.length();
+        char c = evt.getKeyChar();
+
+        if ( evt.getKeyChar()>='0' &&  evt.getKeyChar()<='9'){
+            if (length<6){
+                paybox.setEditable(true);
+            }else{
+                paybox.setEditable(false);
+            }
+
+        }else{
+            if (evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE){
+                paybox.setEditable(true);
+            }else{
+                paybox.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_payboxKeyPressed
 
     public void clear(){
         loanidbox.setText("");
