@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Base64;
 import javax.swing.JOptionPane;
 
 /**
@@ -335,13 +336,14 @@ public class admin extends javax.swing.JInternalFrame {
 
             try {
                 String   password = pwdbox.getText();
+                String encrypted = encryptPassword(password);
                 String name =usernamebox.getText();
 
                 pst=con.prepareStatement("SELECT * FROM login WHERE username=?");
                 pst.setString(1, name);
                 rs = pst.executeQuery();
                 if(rs.next()==false){
-                    String sql = "INSERT INTO login (username,password) VALUES ('"+name+"','"+password+"')";
+                    String sql = "INSERT INTO login (username,password) VALUES ('"+name+"','"+encrypted+"')";
                     pst = con.prepareStatement(sql);
                     pst.execute();
                     JOptionPane.showMessageDialog(null, "Registred Succesfull","Information",JOptionPane.INFORMATION_MESSAGE);
@@ -393,7 +395,8 @@ public class admin extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Search item not found", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     String pwd = rs.getString("password");
-                    cpwdbox.setText(pwd);
+                    String decrypted = decryptPassword(pwd);
+                    cpwdbox.setText(decrypted);
                 }
             } catch (Exception e) {
             }
@@ -407,7 +410,8 @@ public class admin extends javax.swing.JInternalFrame {
             try {
                 String name =namebox.getText();
                 String   password = newpwdbox.getText();
-                String sql = "UPDATE login SET password='"+password+"' WHERE username= '"+name+"'";
+                String encrypted = encryptPassword(password);
+                String sql = "UPDATE login SET password='"+encrypted+"' WHERE username= '"+name+"'";
                 pst = con.prepareStatement(sql);
                 pst.execute();
                 JOptionPane.showMessageDialog(null,"Password change succesfull");
@@ -421,7 +425,13 @@ public class admin extends javax.swing.JInternalFrame {
         clear();
     }//GEN-LAST:event_clearbtn2ActionPerformed
 
-
+ public static String encryptPassword(String password) {
+        return Base64.getEncoder().encodeToString(password.getBytes());
+    }
+  public static String decryptPassword(String encryptedPassword) {
+        byte[] decodedBytes = Base64.getDecoder().decode(encryptedPassword);
+        return new String(decodedBytes);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearbtn;
     private javax.swing.JButton clearbtn2;

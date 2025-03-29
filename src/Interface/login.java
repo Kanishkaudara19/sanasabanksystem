@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Base64;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -51,8 +52,8 @@ public class login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAutoRequestFocus(false);
         setBackground(java.awt.SystemColor.controlHighlight);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setType(java.awt.Window.Type.POPUP);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -91,6 +92,7 @@ public class login extends javax.swing.JFrame {
         loginbtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         loginbtn.setForeground(new java.awt.Color(255, 255, 255));
         loginbtn.setText("Login");
+        loginbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginbtn.setName("loginbtn"); // NOI18N
         loginbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,10 +184,11 @@ public class login extends javax.swing.JFrame {
        }else{
            String name = usernamebox.getText();
            String pwd = passwordbox.getText();
+           String encrypted = encryptPassword(pwd);
            try {
               pst = con.prepareStatement("select username,password from login where username = ? and password= ?");
               pst.setString(1, name);
-              pst.setString(2, pwd);
+              pst.setString(2, encrypted);
               rs=pst.executeQuery();
               
               if(rs.next()){
@@ -238,7 +241,9 @@ public class login extends javax.swing.JFrame {
             }
         });
     }
-
+    public static String encryptPassword(String password) {
+        return Base64.getEncoder().encodeToString(password.getBytes());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
