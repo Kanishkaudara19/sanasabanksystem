@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null"  pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f051682a-20b0-4c8d-bb7d-90f4912f5fd0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="70"/>
+	<parameter name="accno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     withdraw.`accno` AS withdraw_accno,
+     withdraw.`name` AS withdraw_name,
+     withdraw.`amount` AS withdraw_amount,
+     withdraw.`balance` AS withdraw_balance,
+     withdraw.`acc_type` AS withdraw_acc_type,
+     withdraw.`date` AS withdraw_date,
+     withdraw.`time` AS withdraw_time
+FROM
+     `withdraw` withdraw WHERE withdraw.`accno`=$P{accno}]]>
+	</queryString>
+	<field name="withdraw_accno" class="java.lang.Integer"/>
+	<field name="withdraw_name" class="java.lang.String"/>
+	<field name="withdraw_amount" class="java.lang.Integer"/>
+	<field name="withdraw_balance" class="java.lang.Integer"/>
+	<field name="withdraw_acc_type" class="java.lang.String"/>
+	<field name="withdraw_date" class="java.lang.String"/>
+	<field name="withdraw_time" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="160" splitType="Stretch">
+			<staticText>
+				<reportElement x="157" y="0" width="273" height="50" uuid="9791268b-31b4-4984-82bc-cfa12c9f58cb"/>
+				<textElement>
+					<font fontName="Serif" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Withdraw Details]]></text>
+			</staticText>
+			<image>
+				<reportElement x="212" y="50" width="137" height="108" uuid="d496f4cc-725b-48e5-bf08-1b87382a48c3"/>
+				<imageExpression><![CDATA["G:\\sanasabaanksytem\\src\\Images\\report.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="2" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="182" splitType="Stretch">
+			<textField>
+				<reportElement x="173" y="10" width="310" height="20" uuid="201015ca-3364-4ea9-a579-18ed7822ef9a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdraw_accno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="10" width="136" height="20" uuid="6f5186d4-408f-48e8-864f-b6c8763e7fea"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1. Account No               :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="55" width="67" height="20" uuid="91852a12-015e-436c-9cee-70ef48710de0"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2. Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="92" width="136" height="20" uuid="99f6632f-f8a1-48f8-b709-26535cb9bc87"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3. Account type]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="303" y="138" width="124" height="44" uuid="f738b728-f368-429c-8f3c-798df38c2d38"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="427" y="138" width="128" height="44" uuid="07d41d4d-1e31-44ae-a9ea-9b247f184ea2"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="138" width="157" height="44" uuid="537e9c71-a1a8-4fd2-8355-f0bb43ba6f2a"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="157" y="138" width="146" height="44" uuid="512278a7-6722-4e7e-a80c-1b1111b1daa4"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="347" y="152" width="43" height="20" uuid="96e83dcb-82d3-4445-bd8a-c12e39ae5aad"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="472" y="152" width="37" height="20" uuid="86121579-e25d-4d5b-8554-d7644e1cb07b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="152" width="56" height="20" uuid="11bae104-1d28-4e2d-b436-81c9c449450d"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="152" width="56" height="20" uuid="129050ee-2bff-4651-83cc-4d875bd48efa"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Balance]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="173" y="55" width="310" height="20" uuid="0937fa35-df48-477a-bf7b-8e6668234697"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdraw_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="92" width="310" height="20" uuid="74d5d598-14e2-45b2-b9b2-207cb2b7287f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdraw_acc_type}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="33" uuid="b61af1d6-550d-4a22-9b18-6d344abc8ad5"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="0" width="1" height="35" uuid="6c1dc8d9-5d4d-4b95-a391-c2c03d06bed0"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="157" y="0" width="1" height="35" uuid="e04d5b0d-0bcf-4a3c-9418-ee1818a7632d"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="303" y="0" width="1" height="35" uuid="6c03544c-72ec-46f9-8ee5-27c930193dcd"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="427" y="0" width="1" height="35" uuid="6371d2d6-5277-4e57-92f4-eee5431277bf"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="35" uuid="eb1fbb55-4453-45b3-9fa4-26fe014f64b3"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="201" y="13" width="100" height="20" uuid="691044aa-7d32-49f4-a4d6-3ac6da2c443c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdraw_balance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="15" width="100" height="20" uuid="b06cc731-112a-4672-a521-1fd002b6f7f9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdraw_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="327" y="13" width="100" height="20" uuid="d5dc2353-b0cd-4e08-89c9-a1b03ff292de"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdraw_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="15" width="100" height="20" uuid="a2fca024-174c-4a40-a254-f3dda5662c50"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdraw_time}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="257" y="24" width="31" height="20" uuid="8b3aa719-6dd0-45fe-88a6-eb9a18a70bcb"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Page]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="290" y="24" width="100" height="20" uuid="a0bc9143-2edc-4ce6-aec9-3c35e2c2e091"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="472" y="44" width="37" height="20" uuid="5ba4aa0c-a261-49b0-91cc-9d8baeb87ed6"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="44" width="33" height="20" uuid="797b791f-4422-4315-bf82-9c334c43ffae"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="23" y="24" width="100" height="20" uuid="78ae594a-064b-448b-b527-45ba9ab826cd"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="470" y="24" width="85" height="20" uuid="724c0b35-495a-45da-8ec0-69afd830f961"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
